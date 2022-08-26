@@ -1,44 +1,45 @@
 <template>
-    <section v-if="product" class="product">
-        <h2 class="h2">Product</h2>
+    <section class="paintings vh-100">
         <div class="container">
-            <div class="card bg-light">
-                <img :src="product.img" class="card-img-top spin img-fluid center" alt="image">
-                <div class="card-body bg-light">
-                    <h2 class="card-title1">{{ product.title }}</h2>
-                    <h2 class="card-title">R{{ product.price }}</h2>
-                    <!-- <h2 class="card-title">{{product.description}}</h2> -->
-                    <button class="btn btn-dark text-black">Add to Cart</button>
+            <div v-if="paintings" class="row mx-auto">
+                <div v-for="paintings in paintings" :key="paintings.id" class="card row  mx-auto px-4 bg-light">
+                    <div class="card-body">
+                        <div class="bg-light">
+                            <img :src="paintings.img" class="card-image img-fluid" alt="image" />
+                            <h5 class="card-title">{{ paintings.title }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="dot-spinner">
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
                 </div>
             </div>
         </div>
     </section>
-    <div v-else>
-        <div class="dot-spinner">
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-        </div>
-    </div>
 </template>
 
 <script>
 export default {
-    computed: {
-        product() {
-            return this.$store.state.singleproduct;
-        }
+    name: 'PaintingsCard',
+    props: ["paintings"],
+    computed:{
+        paintings(){
+            return this.$store.state.paintings;
+        },
     },
-    mounted() {
-        this.$store.dispatch("getSingleProducts", this.$route.params.id);
-    },
-    methods: {},
-};
+    mounted(){
+        this.$store.dispatch("getPaintings")
+    }
+}
 </script>
 
 <style scoped>
@@ -47,7 +48,7 @@ export default {
     --uib-speed: 0.9s;
     --uib-color: #183153;
     position: relative;
-    left: 46rem;
+    left: 40rem;
     top: 1rem;
     display: flex;
     align-items: center;
@@ -150,50 +151,57 @@ export default {
     }
 }
 
-button {
+
+
+.card {
+    padding: 4rem;
+    padding-left: 2rem;
+    background: rgb(236, 236, 236);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+/* button {
     color: #090909;
     padding: 0.7em 1.7em;
     font-size: 18px;
     border-radius: 0.5em;
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
-    transition: all .3s;
-    box-shadow: 6px 6px 12px #c5c5c5,
-        -6px -6px 12px #ffffff;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
 }
 
 button:active {
     color: #666;
-    box-shadow: inset 4px 4px 12px #c5c5c5,
-        inset -4px -4px 12px #ffffff;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+} */
+
+
+
+.card-image {
+    object-fit: cover;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 1px;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
+section {
+    margin-top: 100px;
+    /* padding-bottom: 100px; */
 }
-
 
 .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25rem;
-    position: relative;
-    left: 28rem;
+    height: 25rem;
+    width: 23rem;
+    margin-bottom: 10px;
+    padding: 1rem;
+    padding-bottom: 3rem;
+    padding-top: 1rem;
 }
 
-.card-title {
-    padding-bottom: 1px;
+h5{
+    padding-top: 1rem;
 }
-
-img {
-    object-fit: cover;
-    height: 20rem;
-    width: 20rem;
-    align-items: center;
-}
-
-
 
 </style>

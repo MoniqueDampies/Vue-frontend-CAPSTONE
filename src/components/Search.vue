@@ -1,13 +1,13 @@
 <template>
-<h1>REGISTER PAGE</h1>
+  <h1>SEARCH PAGE</h1>
 </template>
 
 <script>
 export default {
-    name: 'register'
-
+    name: 'search'
 }
 </script>
 
 <style>
+
 </style>
