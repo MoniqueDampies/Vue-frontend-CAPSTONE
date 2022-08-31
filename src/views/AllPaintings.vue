@@ -9,7 +9,8 @@ export default {
     name: 'allpaintings',
     components: {
         PaintingCard
-    }
+    },
+    
 
 }
 </script>

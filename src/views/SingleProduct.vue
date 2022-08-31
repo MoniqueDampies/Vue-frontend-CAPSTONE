@@ -2,32 +2,25 @@
     <section v-if="product" class="product">
         <h2 class="h2">Product</h2>
         <div class="container">
-            <div class="card bg-light">
+            <div class="card bg-black">
                 <img :src="product.img" class="card-img-top spin img-fluid center" alt="image">
-                <div class="card-body bg-light">
+                <div class="card-body bg-black text-white">
                     <h2 class="card-title1">{{ product.title }}</h2>
                     <h2 class="card-title">R{{ product.price }}</h2>
                     <!-- <h2 class="card-title">{{product.description}}</h2> -->
-                    <button class="btn btn-dark text-black">Add to Cart</button>
+                    <button class="btn btn-black text-white text-black">Add to Cart</button>
                 </div>
             </div>
         </div>
     </section>
     <div v-else>
-        <div class="dot-spinner">
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-            <div class="dot-spinner__dot"></div>
-        </div>
+        <Loader />
+
     </div>
 </template>
-
 <script>
+import Loader from '@/components/Loader.vue';
+
 export default {
     computed: {
         product() {
@@ -38,6 +31,10 @@ export default {
         this.$store.dispatch("getSingleProducts", this.$route.params.id);
     },
     methods: {},
+    
+    components: {
+        Loader
+    }
 };
 </script>
 
@@ -151,15 +148,15 @@ export default {
 }
 
 button {
-    color: #090909;
+    /* color: #090909; */
     padding: 0.7em 1.7em;
     font-size: 18px;
     border-radius: 0.5em;
-    background: #e8e8e8;
+    /* background: #e8e8e8; */
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #c5c5c5,
-        -6px -6px 12px #ffffff;
+    /* box-shadow: 6px 6px 12px #c5c5c5,
+        -6px -6px 12px #ffffff; */
 }
 
 button:active {
@@ -176,6 +173,7 @@ nav {
 
 .card {
     display: flex;
+    border: 1px solid #e8e8e8;
     justify-content: center;
     align-items: center;
     width: 25rem;
@@ -189,11 +187,8 @@ nav {
 
 img {
     object-fit: cover;
-    height: 20rem;
-    width: 20rem;
+    height: 25rem;
+    width: 25rem;
     align-items: center;
 }
-
-
-
 </style>

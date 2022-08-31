@@ -1,42 +1,83 @@
 <template>
-    <section v-if="paintings" class="painting">
-        <h2 class="h2">painting</h2>
-        <div class="container">
-            <div class="card bg-black">
-                <img :src="paintings.img" class="card-img-top spin img-fluid center" alt="image">
-                <div class="card-body bg-black">
-                    <h2 class="card-title1">{{ paintings.title }}</h2>
-                    <h2 class="card-title">R{{ paintings.price }}</h2>
-                    <!-- <h2 class="card-title">{{painting.description}}</h2> -->
-                    <button class="btn btn-black text-white text-black">Add to Cart</button>
-                </div>
-            </div>
-        </div>
+ <AdminNav/>
+        <h5 class="text-white mt-2 text-center">USERS</h5>
+    <router-link to="/addUsers">
+        <button class="btn btn-black text-white w-25">
+            ADD USERS
+        </button>
+    </router-link>
+    <section v-if="users" class="admin mt-4 vh-100">
+        <table class="table align-middle mb-0 text-white table-black container" style="overflow-x:auto;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone</th>
+                    <th>Province</th>
+                    <th>Country</th>
+                    <th>Role</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="users in users" :key="users.id">
+                    <td>{{ users.id }}</td>
+                    <td>{{ users.firstName }}</td>
+                    <td>{{ users.email }}</td>
+                    <td>{{ users.password }}</td>
+                    <td>{{ users.phone }}</td>
+                    <td>{{ users.province }}</td>
+                    <td>{{ users.country }}</td>
+                    <td>{{ users.userRole }}</td>
+                    <td><EditUsersModal/></td>
+                    <td> <button id="delete" class="b btn-layout bg-transparent"
+                            v-on:click="$store.dispatch('deleteUser', users.id,)">
+                            <i class="text-white fas fa-trash" ></i>
+                        </button></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    <router-link to="/admin">
+        <button class="btn btn-black mt-3 text-white w-25">
+            BACK TO ADMIN
+        </button>
+    </router-link>
     </section>
     <div v-else>
-        <Loader />
+                <Loader/>
 
     </div>
+
+
 </template>
 
 <script>
+import AdminNav from '@/components/Admin.vue';
 import Loader from '@/components/Loader.vue';
+import EditUsersModal from '@/components/EditUsersModal.vue';
+
 
 export default {
-    // name: 'singlepainting',
-    computed: {
-        paintings() {
-            return this.$store.state.singlepainting;
-        }
-    },
+    name: 'adminusers',
+    props: ["users"],
     mounted() {
-        this.$store.dispatch("getSinglePaintings", this.$route.params.id);
+        this.$store.dispatch("getUsers");
     },
-    methods: {},
-    
+    computed: {
+        users(){
+            return this.$store.state.users;
+        },
+    },
     components: {
-        Loader
-    }
+    AdminNav,
+    Loader,
+    EditUsersModal
+},
+
 };
 </script>
 
@@ -149,48 +190,7 @@ export default {
     }
 }
 
-button {
-    color: #090909;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    /* background: #e8e8e8; */
-    border: 1px solid #e8e8e8;
-    transition: all .3s;
-    /* box-shadow: 6px 6px 12px #c5c5c5,
-        -6px -6px 12px #ffffff; */
-}
-
-button:active {
-    color: #666;
-    /* box-shadow: inset 4px 4px 12px #c5c5c5,
-        inset -4px -4px 12px #ffffff; */
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-}
-
-
-.card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #e8e8e8;
-    width: 25rem;
-    position: relative;
-    left: 28rem;
-}
-
-.card-title {
-    padding-bottom: 1px;
-}
-
-img {
-    object-fit: cover;
-    height: 35rem;
-    width: 25rem;
-    align-items: center;
+.img-fluid{
+    width: 10rem;
 }
 </style>

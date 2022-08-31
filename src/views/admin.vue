@@ -1,42 +1,40 @@
 <template>
-    <section v-if="paintings" class="painting">
-        <h2 class="h2">painting</h2>
-        <div class="container">
-            <div class="card bg-black">
-                <img :src="paintings.img" class="card-img-top spin img-fluid center" alt="image">
-                <div class="card-body bg-black">
-                    <h2 class="card-title1">{{ paintings.title }}</h2>
-                    <h2 class="card-title">R{{ paintings.price }}</h2>
-                    <!-- <h2 class="card-title">{{painting.description}}</h2> -->
-                    <button class="btn btn-black text-white text-black">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div v-else>
-        <Loader />
 
-    </div>
+    <AdminNav />
+
+    <router-view />
+
 </template>
 
 <script>
-import Loader from '@/components/Loader.vue';
+import AdminNav from '@/components/Admin.vue';
 
 export default {
-    // name: 'singlepainting',
-    computed: {
-        paintings() {
-            return this.$store.state.singlepainting;
-        }
-    },
+    name: 'admin',
+    props: ["products"],
+    props: ["adminproducts"],
+    props: ["adminpaintings"],
+    props: ["adminusers"],
     mounted() {
-        this.$store.dispatch("getSinglePaintings", this.$route.params.id);
+        this.$store.dispatch("getProducts"),
+            this.$store.dispatch("getPaintings"),
+            this.$store.dispatch("getUsers");
     },
-    methods: {},
-    
+    computed: {
+        products() {
+            return this.$store.state.products;
+        },
+        paintings() {
+            return this.$store.state.paintings;
+        },
+        users() {
+            return this.$store.state.users;
+        },
+    },
     components: {
-        Loader
-    }
+        AdminNav
+    },
+
 };
 </script>
 
@@ -149,48 +147,7 @@ export default {
     }
 }
 
-button {
-    color: #090909;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    /* background: #e8e8e8; */
-    border: 1px solid #e8e8e8;
-    transition: all .3s;
-    /* box-shadow: 6px 6px 12px #c5c5c5,
-        -6px -6px 12px #ffffff; */
-}
-
-button:active {
-    color: #666;
-    /* box-shadow: inset 4px 4px 12px #c5c5c5,
-        inset -4px -4px 12px #ffffff; */
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-}
-
-
-.card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #e8e8e8;
-    width: 25rem;
-    position: relative;
-    left: 28rem;
-}
-
-.card-title {
-    padding-bottom: 1px;
-}
-
-img {
-    object-fit: cover;
-    height: 35rem;
-    width: 25rem;
-    align-items: center;
+.img-fluid {
+    width: 10rem;
 }
 </style>

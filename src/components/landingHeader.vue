@@ -1,10 +1,15 @@
 <template>
-  <h1>SEARCH PAGE</h1>
+  <section>
+    <div>
+        
+    </div>
+  </section>
+
 </template>
 
 <script>
 export default {
-    name: 'search'
+
 }
 </script>
 
