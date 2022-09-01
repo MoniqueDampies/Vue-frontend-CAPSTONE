@@ -1,9 +1,9 @@
 <template>
-    <section class="products vh-100 bg-black">
+    <section class="products bg-black">
         <div class="container">
             <div v-if="products" class="row justify-content-center">
-                <input type="search" placeholder="Search Products" class="search w-75  bg-black text-white mb-5" v-model="search">
-                <div class="col-sm-2 text-start">
+                <input type="search" placeholder="Search Products" class="search w-75  bg-black text-white mt-4 mb-3" v-model="search">
+                <div class="col-sm-2 text-start  mt-4 mb-3">
                     <select class="w-100" v-model="search">
                         <option></option>
                         <option value="Acrylic">Acrylic</option>
@@ -196,7 +196,7 @@ export default {
 
 .card {
     background: rgb(0, 0, 0);
-    border: 1px solid #e8e8e8;
+    /* border: 1px solid #e8e8e8; */
     padding: 0;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -230,6 +230,7 @@ nav {
     width: 30rem;
     border-radius: 1px;
     border: 1px;
+    padding-bottom: 1rem;
 }
 
 section {

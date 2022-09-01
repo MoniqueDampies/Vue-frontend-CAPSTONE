@@ -3,7 +3,7 @@
         <div class="container">
             <div class="justify-content-center">
                 <h3>Add A New Painting</h3>
-                <form @submit.prevent="addPaintings" method="POST" class="justify-content-center">
+                <form @submit.prevent="addPainting" method="POST" class="justify-content-center">
 
                     <label for="title">Title</label><br />
                     <input class="w-100 bg-black text-white" type="text" v-model="title"
@@ -20,6 +20,10 @@
                     <label for="description">Painting Description:</label><br />
                     <input class="w-100 bg-black text-white" type="text" v-model="description"
                         placeholder="Enter Painting Description" required /><br />
+
+                    <label for="description">Painting Size:</label><br />
+                    <input class="w-100 bg-black text-white" type="text" v-model="size"
+                        placeholder="Enter Painting Size eg: 10 x 10" required /><br />
 
                     <label for="img">Painting Image:</label><br />
                     <input class="w-100 bg-black text-white" type="text" v-model="img"
@@ -44,20 +48,23 @@ export default {
             price: "",
             category: "",
             description: "",
+            size: "",
             img: "",
         };
     },
     methods: {
-        addPaintings() {
-            this.$store.dispatch("addPaintings", {
-                title: title,
-                price: price,
-                category: category,
-                description: description,
-                img: img,
-            });
-        },
-    },
+        addPainting() {
+            this.$store.dispatch('addPainting', {
+                title: this.title,
+                category: this.category,
+                price: this.price,
+                description: this.description,
+                size: this.size,
+                img: this.img
+            })
+
+        }
+    }
 };
 </script>
 

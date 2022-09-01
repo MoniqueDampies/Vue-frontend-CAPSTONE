@@ -7,7 +7,7 @@
                     <label for="title">Title</label><br />
                     <input class="w-100 bg-black text-white" type="text" v-model="title" placeholder="Enter Product Title" required /><br />
                     <label for="category">Product Category:</label><br />
-                    <select class="w-100 bg-black text-white" name="category" id="category">
+                    <select class="w-100 bg-black text-white" v-model="category" name="category" id="category">
                         <option value=""></option>
                         <option value="Acrylic Paint Brushes">Acrylic Paint Brushes</option>
                         <option value="Oil Paint Brushes">Oil Paint Brushes</option>
@@ -45,6 +45,7 @@
 <script>
 export default {
     name: "addProducts",
+    props: ["products"],
     data() {
         return {
             title: "",
@@ -57,11 +58,11 @@ export default {
     methods: {
         addProducts() {
             this.$store.dispatch("addProducts", {
-                title: title,
-                price: price,
-                category: category,
-                description: description,
-                img: img,
+                title: this.title,
+                price: this.price,
+                category: this.category,
+                description: this.description,
+                img: this.img,
             });
         },
     },
@@ -88,6 +89,7 @@ form input{
 form label{
     margin-top: 1rem;
     text-transform: uppercase;
+    color: white;
 }
 
 button {

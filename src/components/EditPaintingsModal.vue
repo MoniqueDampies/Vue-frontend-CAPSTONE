@@ -1,10 +1,10 @@
 <template>
-    <button class="bg-transparent" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button class="bg-transparent" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + paintings.id">
         <i class="text-white fas fa-pen"></i></button>
 
 
     <!-- Modal1 -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" :id="'exampleModal' + paintings.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -17,30 +17,30 @@
 
                             <div class="col-sm-8">
 
-                                <form @submit.prevent="addPaintings" method="POST" class="justify-content-center">
+                                <form @submit.prevent="editPainting" method="PUT" class="justify-content-center">
 
                                     <label for="title">Title</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="title"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.title"
                                         placeholder="Enter Painting Title" required /><br />
 
                                     <label for="category">Painting Category:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="category"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.category"
                                         placeholder="Enter Painting Category" required /><br />
 
                                     <label for="price">Painting Price:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="price"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.price"
                                         placeholder="Enter Painting Price" required /><br />
 
                                     <label for="description">Painting Description:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="description"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.description"
                                         placeholder="Enter Painting Description" required /><br />
 
                                     <label for="img">Painting Image:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="img"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.img"
                                         placeholder="Add Painting postimage direct link" required /><br />
 
-                                    <button class="mt-4 w-100 btn-layout bg-black text-white" @click="submit">
-                                        Add Painting
+                                    <button class="mt-4 w-100 btn-layout bg-black text-white" data-bs-dismiss="modal" @click="submit">
+                                        Edit Painting Information
                                     </button>
 
                                 </form>
@@ -57,29 +57,28 @@
 </template>
 
 <script>
-name: 'EditPaintingsModal';
 export default {
+    name: "EditPaintingsModal",
+    props: ["paintings"],
     data() {
         return {
-            Prod_name: '',
-            category: '',
-            price: '',
-            description: '',
-            img1: '',
-            img2: '',
-            dateAdded: ''
+            title: "",
+            price: "",
+            category: "",
+            description: "",
+            size: "",
+            img: "",
         }
     },
     methods: {
-        addProduct() {
-            this.$store.dispatch('addProduct', {
-                Prod_name: this.Prod_name,
+        editPainting() {
+            this.$store.dispatch('editPainting', {
+                title: this.title,
                 category: this.category,
                 price: this.price,
                 description: this.description,
-                img1: this.img1,
-                img2: this.img2,
-                dateAdded: this.dateAdded
+                size: this.size,
+                img: this.img
             })
 
         }
@@ -96,5 +95,20 @@ export default {
 
 .btn-close {
     background-color: white;
+}
+
+::placeholder{
+    text-align: center;
+    color: white;
+}
+
+label{
+    color: white;
+    padding: 1rem;
+}
+
+.btn-layout {
+    border: 1px solid white;
+    border-radius: 2px;
 }
 </style>

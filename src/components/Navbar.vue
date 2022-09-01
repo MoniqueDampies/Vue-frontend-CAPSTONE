@@ -53,9 +53,9 @@ nav {
 .container{
     background-color: white;
     color: black;
-    z-index: 1;
     max-width: 96rem!important;
     max-height: 6rem!important;
+    z-index: 1;
 }
 
 a {

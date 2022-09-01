@@ -29,7 +29,7 @@
                     <td class="w-25">{{ paintings.description }}</td>
                     <td class="w-25"><img :src="paintings.img" class="img-fluid" alt="" /></td>
                     <td class="w-25">R {{ paintings.price }}.00</td>
-                    <td><EditPaintingsModal/></td>
+                    <td><EditPaintingsModal :paintings="paintings"/></td>
                     <td> <button id="delete" class="b btn-layout bg-transparent"
                             v-on:click="$store.dispatch('deletePainting', paintings.id,)">
                             <i class="text-white fa-solid fa-trash"></i>

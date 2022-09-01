@@ -1,8 +1,8 @@
 <template>
-    <section class="paintings vh-100">
+    <section class="paintings bg-black">
         <div class="container">
             <div v-if="paintings" class="row mx-auto justify-content-center">
-                <input type="text" placeholder="Search Paintings" class="w-75 bg-black text-white mb-5" v-model="search">
+                <input type="text" placeholder="Search Paintings" class="w-75 search mt-5 bg-black text-white mb-5" v-model="search">
                 <div v-for="paintings in paintings" :key="paintings.id" class="card row  mx-auto px-4 bg-black">
                     <div class="card-body bg-black">
                         <div class="bg-black">
@@ -195,6 +195,9 @@ button:active {
     /* box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff; */
 }
 
+.search{
+    height: 2rem;
+}
 
 
 .card-image {
@@ -215,7 +218,7 @@ section {
     margin-bottom: 10px;
     padding: 1rem;
     padding-bottom: 3rem;
-    border: 1px solid #e8e8e8;
+    /* border: 1px solid #e8e8e8; */
     padding-top: 1rem;
 }
 

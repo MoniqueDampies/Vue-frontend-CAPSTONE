@@ -23,67 +23,80 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: home
+    component: home,
+    props:true
   },
   {
     path: '/about',
     name: 'about',
-    component: about
+    component: about,
+    props:true
   },
   {
     path: '/account',
     name: 'account',
-    component: account
+    component: account,
+    props:true
   },
   {
     path: '/admin',
     name: 'admin',
-    component: admin
+    component: admin,
+    props:true
   },
   {
     path: '/adminproducts',
     name: 'adminproducts',
-    component: adminproducts
+    component: adminproducts,
+    props:true
   },
   {
     path: '/addProducts',
     name: 'addProducts',
-    component: addProducts
+    component: addProducts,
+    props:true
   },
   {
     path: '/addPaintings',
     name: 'addPaintings',
-    component: addPaintings
+    component: addPaintings,
+    props:true
   },
   {
     path: '/addUsers',
     name: 'addUsers',
-    component: addUsers
+    component: addUsers,
+    props:true
   },
   {
     path: '/adminpaintings',
     name: 'adminpaintings',
-    component: adminpaintings
+    component: adminpaintings,
+    props:true
   },
   {
     path: '/adminusers',
     name: 'adminusers',
-    component: adminusers
+    component: adminusers,
+    props:true
   },
   {
     path: '/allpaintings',
     name: 'allpaintings',
-    component: allpaintings
+    component: allpaintings,
+    props:true
   },
   {
     path: '/singlepainting',
     name: 'singlepainting',
-    component: singlepainting
+    component: singlepainting,
+    props:true
   },
   {
     path: '/allproducts',
     name: 'allproducts',
-    component: allproducts
+    component: allproducts,
+    props:true
   },
   {
     path: '/singleproduct',
@@ -94,22 +107,26 @@ const routes = [
   {
     path: '/contact',
     name: 'contact',
-    component: contact
+    component: contact,
+    props:true
   },
   {
     path: '/login',
     name: 'login',
-    component: login
+    component: login,
+    props:true
   },
   {
     path: '/register',
     name: 'register',
-    component: register
+    component: register,
+    props:true
   },
   {
     path: '/landing',
     name: 'landing',
-    component: landing
+    component: landing,
+    props:true
   }
 ]
 

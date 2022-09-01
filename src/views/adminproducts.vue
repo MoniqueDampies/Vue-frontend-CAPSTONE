@@ -25,14 +25,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="product in products" :key="product.id">
+                <tr v-for="(product, index) in products" :key="index">
                     <td>{{ product.id }}</td>
                     <td>{{ product.title }}</td>
                     <td>{{ product.category }}</td>
                     <td class="w-25">{{ product.description }}</td>
                     <td><img :src="product.img" class="img-fluid" alt="" /></td>
                     <td>R {{ product.price }}.00</td>
-                    <td><EditProductModal/></td>
+                    <td><EditProductModal :product="product"/></td>
                     <td> <button id="delete" class="b bg-transparent btn-layout"
                             v-on:click="$store.dispatch('deleteProduct', product.id,)">
                             <i class="text-white fa-solid fa-trash" @click="reloadPage"></i>
@@ -80,6 +80,11 @@ export default {
     EditProductModal
 },
     methods: {
+        editproduct(){
+      return this.$store.dispatch("editproduct", this.product);
+    
+},
+
         reloadPage() {
             window.location.reload(), 5000;
         }

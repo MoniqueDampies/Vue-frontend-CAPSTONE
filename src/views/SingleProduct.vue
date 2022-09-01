@@ -1,10 +1,10 @@
 <template>
-    <section v-if="product" class="product">
+    <section v-if="product" class="product container">
         <h2 class="h2">Product</h2>
-        <div class="container">
+        <div class="row">
             <div class="card bg-black">
-                <img :src="product.img" class="card-img-top spin img-fluid center" alt="image">
-                <div class="card-body bg-black text-white">
+                <img :src="product.img" class="col-lg-12 card-img-top spin img-fluid center" alt="image">
+                <div class="col-lg-12  card-body bg-black text-white">
                     <h2 class="card-title1">{{ product.title }}</h2>
                     <h2 class="card-title">R{{ product.price }}</h2>
                     <!-- <h2 class="card-title">{{product.description}}</h2> -->
@@ -171,7 +171,7 @@ nav {
 }
 
 
-.card {
+/* .card {
     display: flex;
     border: 1px solid #e8e8e8;
     justify-content: center;
@@ -179,16 +179,23 @@ nav {
     width: 25rem;
     position: relative;
     left: 28rem;
-}
+} */
 
 .card-title {
     padding-bottom: 1px;
 }
 
-img {
-    object-fit: cover;
+.card-body{
+    border: 1px solid white;
     height: 25rem;
     width: 25rem;
-    align-items: center;
+}
+
+img {
+    object-fit: cover;
+    border: 1px solid red;
+    height: 25rem;
+    width: 25rem;
+    /* align-items: center; */
 }
 </style>

@@ -25,14 +25,14 @@
             <tbody>
                 <tr v-for="users in users" :key="users.id">
                     <td>{{ users.id }}</td>
-                    <td>{{ users.firstName }}</td>
+                    <td>{{ users.firstName }} {{ users.lastName }}</td>
                     <td>{{ users.email }}</td>
                     <td>{{ users.password }}</td>
                     <td>{{ users.phone }}</td>
                     <td>{{ users.province }}</td>
                     <td>{{ users.country }}</td>
                     <td>{{ users.userRole }}</td>
-                    <td><EditUsersModal/></td>
+                    <td><EditUsersModal :users="users"/></td>
                     <td> <button id="delete" class="b btn-layout bg-transparent"
                             v-on:click="$store.dispatch('deleteUser', users.id,)">
                             <i class="text-white fas fa-trash" ></i>
