@@ -1,5 +1,5 @@
 <template>
-    <h1>LOGIN PAGE</h1>
+    <h1 class="text-center">LOGIN PAGE</h1>
     <form   @submit.prevent="login" method="POST">
             <!-- email -->
         <div class="input-group">

@@ -1,6 +1,6 @@
 <template>
-  <div class="hero-image">
-    <img src="https://i.postimg.cc/7YZwzHSJ/ceiling-painting-4912734-1920.jpg">
+  <!-- <div class="hero-image">
+    <img src="https://i.postimg.cc/7YZwzHSJ/ceiling-painting-4912734-1920.jpg" defer>
     <div class="hero-text">
       <h1>THE FLAIR OF EXQUISITE HANDCRAFTED ART SUPPLIES</h1>
 
@@ -9,17 +9,20 @@
         </button>
       </router-link>
     </div>
-  </div>
-  <div class="container bg-black">
+  </div> -->
+
+  <Header/>
+  <HomeProds/>
+  <!-- <div class="container bg-black">
     <div v-if="products" class="row">
-      <h4 class="text-white mt-4 mb-3">ART MART'S FINEST</h4>
-      <h3 class="text-white mb-4">COLLECTOR’S EDITION</h3>
-      <div v-for="product in products" :key="product.id" class="card row mx-2 text-center bg-black">
+      <h4 class="text-center text-white mt-4 mb-3">ART MART'S FINEST</h4>
+      <h3 class="text-center text-white mb-4">COLLECTOR’S EDITION</h3>
+      <div v-for="product in products" :key="product.id" class="card row mx-2 bg-black">
         <div class="card-body">
           <div class="bg-black">
             <img :src="product.img" class="card-image img-fluid" alt="image" />
             <h5 class="card-title">{{ product.title }}</h5>
-            <!-- <h5 class="card-category">{{ product.category }}</h5> -->
+            <h5 class="card-category">{{ product.category }}</h5>
             <h5>R {{ product.price }}.00</h5>
           </div>
         </div>
@@ -32,7 +35,7 @@
             </router-link>
     </div>
     
-  </div>
+  </div> -->
   <!-- <div class="container w-100">
     <img src="https://i.postimg.cc/7YZwzHSJ/ceiling-painting-4912734-1920.jpg">
   </div>
@@ -42,6 +45,8 @@
 </template>
 
 <script>
+  import Header from '../components/landingHeader.vue'
+import HomeProds from '../components/HomeProds.vue'
 export default {
   name: 'home',
   props: ["product"],
@@ -55,7 +60,12 @@ export default {
     this.$store.dispatch("getProducts");
     this.$store.commit("setSingleProduct", null);
 
-  }
+  },
+  components: {
+    Header,
+    HomeProds
+}
+
 };
 </script>
 <style scoped>
@@ -113,11 +123,14 @@ img {
 }
 
 .view-btn{
-  margin-top: 1rem;
+  margin-top: 2rem;
   position: relative;
-  top: 1rem;
+  top: 2rem;
   letter-spacing: 1px;
   padding: 10px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .card-image {

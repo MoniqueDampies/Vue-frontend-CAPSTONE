@@ -3,8 +3,8 @@
     <!-- subheading -->
     <h5 class="text-white mt-2 text-center">PRODUCTS</h5>
     <!-- add products modal button -->
-    <router-link to="/addProducts">
-        <button class="btn btn-black text-white w-25">
+    <router-link class="text-center" to="/addProducts">
+        <button class="btn text-center btn-black text-white w-25">
             ADD PRODUCTS
         </button>
     </router-link>
@@ -30,23 +30,24 @@
                     <td>{{ product.title }}</td>
                     <td>{{ product.category }}</td>
                     <td class="w-25">{{ product.description }}</td>
-                    <td><img :src="product.img" class="img-fluid" alt="" /></td>
+                    <td><img :src="product.img" class="img-fluid" alt="" defer /></td>
                     <td>R {{ product.price }}.00</td>
-                    <td><EditProductModal :product="product"/></td>
-                    <td> <button id="delete" class="b bg-transparent btn-layout"
-                            v-on:click="$store.dispatch('deleteProduct', product.id,)">
-                            <i class="text-white fa-solid fa-trash" @click="reloadPage"></i>
+                    <td>
+                        <EditProductModal :product="product" />
+                    </td>
+                    <td> <button id="delete" class="b bg-transparent btn-layout" @click="deleteProduct(product.id)">
+                            <i class="text-white fa-solid fa-trash"></i>
                         </button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        
-    <router-link to="/admin">
-        <button class="btn btn-black mt-3 text-white w-25">
-            BACK TO ADMIN
-        </button>
-    </router-link>
+
+        <router-link to="/admin">
+            <button class="btn btn-black mt-3 text-white w-25">
+                BACK TO ADMIN
+            </button>
+        </router-link>
     </section>
     <div v-else>
         <Loader />
@@ -58,7 +59,6 @@
 
 <script>
 import Loader from '@/components/Loader.vue';
-
 import AdminNav from '@/components/Admin.vue';
 import EditProductModal from '@/components/EditProductModal.vue';
 
@@ -75,18 +75,19 @@ export default {
         },
     },
     components: {
-    AdminNav,
-    Loader,
-    EditProductModal
-},
+        AdminNav,
+        Loader,
+        EditProductModal
+    },
     methods: {
-        editproduct(){
-      return this.$store.dispatch("editproduct", this.product);
-    
-},
+        editproduct() {
+            return this.$store.dispatch("editProduct", this.product);
 
-        reloadPage() {
-            window.location.reload(), 5000;
+        },
+        deleteProduct(id) {
+            console.log("Product was deleted");
+            return this.$store.dispatch("deleteProduct", id);
+
         }
     }
 
@@ -200,6 +201,12 @@ export default {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .img-fluid {

@@ -1,5 +1,5 @@
 <template>
-    <div class="progress-loader">
+    <div class="progress-loader mt-5">
         <div class="progress"></div>
     </div>
 </template>
@@ -20,9 +20,9 @@ export default {
 }
 
 .progress-loader {
-    width: 150px;
+    width: 25rem;
     background: rgba(236, 236, 238, 0.253);
-    height: 3px;
+    height: 5px;
     border-radius: 7px;
 }
 

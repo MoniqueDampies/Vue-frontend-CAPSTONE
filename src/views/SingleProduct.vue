@@ -8,7 +8,7 @@
                     <h2 class="card-title1">{{ product.title }}</h2>
                     <h2 class="card-title">R{{ product.price }}</h2>
                     <!-- <h2 class="card-title">{{product.description}}</h2> -->
-                    <button class="btn btn-black text-white text-black">Add to Cart</button>
+                    <button @click="addCart" class="btn btn-black text-white text-black">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -24,14 +24,25 @@ import Loader from '@/components/Loader.vue';
 export default {
     computed: {
         product() {
-            return this.$store.state.singleproduct;
+            return this.$store.state.product;
+        },
+        user(){
+            return this.$store.state.user;
         }
     },
     mounted() {
         this.$store.dispatch("getSingleProducts", this.$route.params.id);
+        this.$store.commit("setSingleProduct", null)
     },
-    methods: {},
-    
+    methods: {
+        addCart(){
+            const payload = {
+                id: this.product.id
+            }
+            this.$store.dispatch("addCart", payload)
+        }
+    },
+
     components: {
         Loader
     }
@@ -185,7 +196,7 @@ nav {
     padding-bottom: 1px;
 }
 
-.card-body{
+.card-body {
     border: 1px solid white;
     height: 25rem;
     width: 25rem;

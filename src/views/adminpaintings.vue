@@ -1,12 +1,12 @@
 <template>
-    <AdminNav/>
-        <h5 class="text-white mt-2 text-center">PAINTINGS</h5>
+    <AdminNav />
+    <h5 class="text-white mt-2 text-center">PAINTINGS</h5>
     <router-link to="/addPaintings">
         <button class="btn btn-black text-white w-25">
             ADD PAINTINGS
         </button>
     </router-link>
-           
+
     <section v-if="paintings" class="admin mt-4 vh-100">
         <table class="table align-middle mb-0 table-black text-white  container" style="overflow-x:auto;">
             <thead>
@@ -27,9 +27,11 @@
                     <td>{{ paintings.title }}</td>
                     <td class="w-25">{{ paintings.category }}</td>
                     <td class="w-25">{{ paintings.description }}</td>
-                    <td class="w-25"><img :src="paintings.img" class="img-fluid" alt="" /></td>
+                    <td class="w-25"><img :src="paintings.img" class="img-fluid" alt="" defer /></td>
                     <td class="w-25">R {{ paintings.price }}.00</td>
-                    <td><EditPaintingsModal :paintings="paintings"/></td>
+                    <td>
+                        <EditPaintingsModal :paintings="paintings" />
+                    </td>
                     <td> <button id="delete" class="b btn-layout bg-transparent"
                             v-on:click="$store.dispatch('deletePainting', paintings.id,)">
                             <i class="text-white fa-solid fa-trash"></i>
@@ -38,15 +40,15 @@
                 </tr>
             </tbody>
         </table>
-        
-    <router-link to="/admin">
-        <button class="btn btn-black mt-3 text-white w-25">
-            BACK TO ADMIN
-        </button>
-    </router-link>
+
+        <router-link to="/admin">
+            <button class="btn btn-black mt-3 text-white w-25">
+                BACK TO ADMIN
+            </button>
+        </router-link>
     </section>
     <div v-else>
-                  <Loader/>
+        <Loader />
 
     </div>
 
@@ -58,7 +60,6 @@ import AdminNav from '@/components/Admin.vue';
 import Loader from '@/components/Loader.vue';
 import EditPaintingsModal from '@/components/EditPaintingsModal.vue';
 
-
 export default {
     name: 'adminpaintings',
     props: ["paintings"],
@@ -66,18 +67,23 @@ export default {
         this.$store.dispatch("getPaintings");
     },
     computed: {
-        paintings(){
+        paintings() {
             return this.$store.state.paintings;
         },
     },
     components: {
-    AdminNav,
-    Loader,
-    EditPaintingsModal
-},
+        AdminNav,
+        Loader,
+        EditPaintingsModal
+    },
     methods: {
-        reloadPage() {
-            window.location.reload(), 5000;
+        editpainting() {
+            return this.$store.dispatch("editpainting", this.paintings)
+        },
+        deletePainting(id) {
+            console.log("Painting was deleted");
+            return this.$store.dispatch("deletePainting", id);
+
         }
     }
 
@@ -193,7 +199,13 @@ export default {
     }
 }
 
-.img-fluid{
+.img-fluid {
     width: 10rem;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

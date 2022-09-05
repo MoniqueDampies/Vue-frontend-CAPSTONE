@@ -5,7 +5,7 @@
     </div>
     
     <div class="main">
-        <h1>ALL PAINTINGS PAGE</h1>
+        <h1 class="text-center">ALL PAINTINGS PAGE</h1>
     <PaintingCard/>
     </div>
 </template>
@@ -13,7 +13,7 @@
 <script>
 import PaintingCard from '@/components/PaintingCard.vue';
 export default {
-    name: 'allpaintings',
+    name: 'Paintings',
     components: {
         PaintingCard
     },

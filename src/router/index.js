@@ -23,20 +23,17 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: home,
-    props:true
+    component: home
   },
   {
     path: '/about',
     name: 'about',
-    component: about,
-    props:true
+    component: about
   },
   {
     path: '/account',
     name: 'account',
-    component: account,
-    props:true
+    component: account
   },
   {
     path: '/admin',
@@ -87,7 +84,7 @@ const routes = [
     props:true
   },
   {
-    path: '/singlepainting',
+    path: '/singlepainting/:id',
     name: 'singlepainting',
     component: singlepainting,
     props:true
@@ -99,7 +96,7 @@ const routes = [
     props:true
   },
   {
-    path: '/singleproduct',
+    path: '/singleproduct/:id',
     name: 'singleproduct',
     component: singleproduct,
     props: true
@@ -107,26 +104,22 @@ const routes = [
   {
     path: '/contact',
     name: 'contact',
-    component: contact,
-    props:true
+    component: contact
   },
   {
     path: '/login',
     name: 'login',
-    component: login,
-    props:true
+    component: login
   },
   {
     path: '/register',
     name: 'register',
-    component: register,
-    props:true
+    component: register
   },
   {
     path: '/landing',
     name: 'landing',
-    component: landing,
-    props:true
+    component: landing
   }
 ]
 

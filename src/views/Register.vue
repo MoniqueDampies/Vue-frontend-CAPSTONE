@@ -1,5 +1,5 @@
 <template>
-    <h1>REGISTER PAGE</h1>
+    <h1 class="text-center">REGISTER PAGE</h1>
     <form @submit.prevent="Registerform" method="POST">
         <div class="input-group">
             <input required="" type="text"  v-model="firstName"  name="firstName" autocomplete="off" class="input">

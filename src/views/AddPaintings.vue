@@ -2,7 +2,7 @@
     <section class="vh-100">
         <div class="container">
             <div class="justify-content-center">
-                <h3>Add A New Painting</h3>
+                <h3 class="text-center">Add A New Painting</h3>
                 <form @submit.prevent="addPainting" method="POST" class="justify-content-center">
 
                     <label for="title">Title</label><br />
@@ -14,7 +14,7 @@
                         placeholder="Enter Painting Category" required /><br />
 
                     <label for="price">Painting Price:</label><br />
-                    <input class="w-100 bg-black text-white" type="text" v-model="price"
+                    <input class="w-100 bg-black text-white" type="number" v-model="price"
                         placeholder="Enter Painting Price" required /><br />
 
                     <label for="description">Painting Description:</label><br />

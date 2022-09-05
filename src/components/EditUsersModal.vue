@@ -15,7 +15,7 @@
 
                             <div class="col-sm-8">
 
-                                <form @submit.prevent="editUsers" method="POST" class="justify-content-center">
+                                <form @submit.prevent="editUser" method="POST" class="justify-content-center">
 
                                     <label for="title">User First Name:</label><br />
                                     <input class="w-100 bg-black text-white" type="text" v-model="users.firstName"

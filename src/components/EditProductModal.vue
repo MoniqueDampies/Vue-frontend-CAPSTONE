@@ -7,7 +7,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="#exampleModal">EDIT PRODUCT FORM</h5>
+                    <h5 class="modal-title text-center" id="#exampleModal">EDIT PRODUCT FORM</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -38,7 +38,7 @@
                                     </select><br />
 
                                     <label for="price">Product Price:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="product.price"
+                                    <input class="w-100 bg-black text-white" type="number" v-model="product.price"
                                         placeholder="Enter Product Price" required /><br />
 
                                     <label for="description">Product Description:</label><br />

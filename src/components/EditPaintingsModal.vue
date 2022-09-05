@@ -28,7 +28,7 @@
                                         placeholder="Enter Painting Category" required /><br />
 
                                     <label for="price">Painting Price:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.price"
+                                    <input class="w-100 bg-black text-white" type="number" v-model="paintings.price"
                                         placeholder="Enter Painting Price" required /><br />
 
                                     <label for="description">Painting Description:</label><br />

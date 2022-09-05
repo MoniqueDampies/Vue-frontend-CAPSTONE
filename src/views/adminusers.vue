@@ -1,6 +1,6 @@
 <template>
- <AdminNav/>
-        <h5 class="text-white mt-2 text-center">USERS</h5>
+    <AdminNav />
+    <h5 class="text-white mt-2 text-center">USERS</h5>
     <router-link to="/addUsers">
         <button class="btn btn-black text-white w-25">
             ADD USERS
@@ -31,25 +31,25 @@
                     <td>{{ users.phone }}</td>
                     <td>{{ users.province }}</td>
                     <td>{{ users.country }}</td>
-                    <td>{{ users.userRole }}</td>
-                    <td><EditUsersModal :users="users"/></td>
-                    <td> <button id="delete" class="b btn-layout bg-transparent"
-                            v-on:click="$store.dispatch('deleteUser', users.id,)">
-                            <i class="text-white fas fa-trash" ></i>
+                    <td>{{ users.isAdmin }}</td>
+                    <td>
+                        <EditUsersModal :users="users" />
+                    </td>
+                    <td> <button id="delete" class="b btn-layout bg-transparent" @click="deleteUser(users.id)">
+                            <i class="text-white fas fa-trash"></i>
                         </button></td>
                 </tr>
             </tbody>
         </table>
-        
-    <router-link to="/admin">
-        <button class="btn btn-black mt-3 text-white w-25">
-            BACK TO ADMIN
-        </button>
-    </router-link>
+
+        <router-link to="/admin">
+            <button class="btn btn-black mt-3 text-white w-25">
+                BACK TO ADMIN
+            </button>
+        </router-link>
     </section>
     <div v-else>
-                <Loader/>
-
+        <Loader />
     </div>
 
 
@@ -68,15 +68,25 @@ export default {
         this.$store.dispatch("getUsers");
     },
     computed: {
-        users(){
+        users() {
             return this.$store.state.users;
         },
     },
     components: {
-    AdminNav,
-    Loader,
-    EditUsersModal
-},
+        AdminNav,
+        Loader,
+        EditUsersModal
+    },
+    methods: {
+        edituser() {
+            return this.$store.dispatch("editUser")
+        },
+        deleteUser(id) {
+            // console.log("User was deleted");
+            return this.$store.dispatch("deleteUser", id);
+            
+        }
+    }
 
 };
 </script>
@@ -190,7 +200,13 @@ export default {
     }
 }
 
-.img-fluid{
+.img-fluid {
     width: 10rem;
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

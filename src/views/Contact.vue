@@ -1,5 +1,5 @@
 <template>
-    <h1>CONTACT PAGE</h1>
+    <h1 class="text-center">CONTACT PAGE</h1>
 
 </template>
 

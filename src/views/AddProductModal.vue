@@ -2,7 +2,7 @@
     <section class="vh-100">
         <div class="container">
             <div class="justify-content-center">
-                <h3>Add A New Product</h3>
+                <h3 class="text-center">Add A New Product</h3>
                 <form @submit.prevent="addProducts" method="POST" class="justify-content-center">
                     <label for="title">Title</label><br />
                     <input class="w-100 bg-black text-white" type="text" v-model="title" placeholder="Enter Product Title" required /><br />
@@ -23,7 +23,7 @@
                     </select><br />
 
                     <label for="price">Product Price:</label><br />
-                    <input class="w-100 bg-black text-white" type="text" v-model="price" placeholder="Enter Product Price" required /><br />
+                    <input class="w-100 bg-black text-white" type="number" v-model="price" placeholder="Enter Product Price" required /><br />
 
                     <label for="description">Product Description:</label><br />
                     <input class="w-100 bg-black text-white" type="text" v-model="description" placeholder="Enter Product Description"

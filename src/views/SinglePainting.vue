@@ -26,7 +26,7 @@ export default {
     // name: 'singlepainting',
     computed: {
         paintings() {
-            return this.$store.state.singlepainting;
+            return this.$store.state.painting;
         }
     },
     mounted() {

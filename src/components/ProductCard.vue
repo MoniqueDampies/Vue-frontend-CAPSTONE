@@ -17,7 +17,7 @@
                         <option value="Paper">Paper</option>
                     </select>
                 </div>
-                <div v-for="product in products" :key="product.id" class="card row mx-2 text-center bg-black">
+                <div v-for="product in products" :key="product.id" class="card row mx-2  bg-black">
                     <div class="card-body">
                         <div class="bg-black">
                             <img :src="product.img" class="card-image img-fluid" alt="image" />
@@ -28,7 +28,7 @@
                                 name: 'singleproduct',
                                 params: { id: product.id },
                             }">
-                                <button class="btn btn-black text-white w-5">
+                                <button class="btn btn-black text-center btn-outline-black text-white w-5">
                                     View
                                 </button>
                             </router-link>
@@ -205,12 +205,20 @@ export default {
 button {
     color: #090909;
     padding: 0.7em 1.7em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
     font-size: 18px;
     /* border-radius: 0.5em; */
     /* background: #e8e8e8; */
     border: 1px solid #e8e8e8;
     transition: all 0.3s;
     /* box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; */
+}
+
+router-link{
+    text-decoration: none;
 }
 
 button:active {
