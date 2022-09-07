@@ -2,7 +2,7 @@
 
     <AdminNav />
 
-    <router-view />
+    <!-- <router-view /> -->
 
 </template>
 
@@ -11,7 +11,7 @@ import AdminNav from '@/components/Admin.vue';
 
 export default {
     name: 'admin',
-    props: ["products"],
+    props: ["AdminNav"],
     props: ["adminproducts"],
     props: ["adminpaintings"],
     props: ["adminusers"],

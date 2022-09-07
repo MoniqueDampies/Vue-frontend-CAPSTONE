@@ -1,6 +1,6 @@
 <template>
     <section class="vh-100">
-        <div class="container">
+        <div class=" container">
             <div class="justify-content-center">
                 <h3 class="text-center">Add A New Painting</h3>
                 <form @submit.prevent="addPainting" method="POST" class="justify-content-center">
@@ -42,6 +42,7 @@
 <script>
 export default {
     name: "addPaintings",
+    props: ["paintings"],
     data() {
         return {
             title: "",

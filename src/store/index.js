@@ -1,7 +1,7 @@
 import {
   createStore
 } from "vuex";
-import axios from "axios";
+// import axios from "axios";
 import router from "@/router";
 import swal from "sweetalert";
 
@@ -28,16 +28,16 @@ export default createStore({
     getPainting: (state) => state.painting,
   },
   mutations: {
-    setUsers(state, values) {
-      state.users = values;
+    setUsers(state, users) {
+      state.users = users;
     },
 
-    setUser(state, value) {
-      state.user = value;
+    setUser(state, user) {
+      state.user = user;
     },
 
-    setCart(state, value) {
-      state.cart = value;
+    setCart(state, cart) {
+      state.cart = cart;
     },
 
     setProducts(state, products) {
@@ -57,28 +57,50 @@ export default createStore({
     },
   },
   actions: {
+
     //*/********************//*PRODUCTS*//*****************************/*//
 
     //*GETTING ALL PRODUCTS *//
 
-    async getProducts(context) {
-      let res = await axios.get(artmart + "products");
-      let {
-        results
-      } = await res.data;
-      if (results) {
-        context.commit("setProducts", results);
+    // async getProducts(context) {
+    //   let res = await axios.get("https://node-backend-capstone.herokuapp.com/" + "products");
+    //   let {
+    //     results
+    //   } = await res.data;
+    //   if (results) {
+    //     context.commit("setProducts", results);
+    //   }
+    // },
+
+    getProducts: async (context) => {
+      let res = await fetch('https://node-backend-capstone.herokuapp.com/products');
+      let data = await res.json();
+      let result = data.results;
+      if (result) {
+        context.commit('setProducts', result)
+      } else {
+        console.log('Get products failed')
       }
     },
 
     //*GETTING SINGLE PRODUCTS *//
 
-    async getSingleProducts(context, id) {
-      let res = await axios.get(artmart + "products/" + id);
-      let {
-        results
-      } = await res.data;
-      context.commit("setSingleProduct", results[0]);
+    // async getSingleProducts(context, id) {
+    //   let res = await axios.get("https://node-backend-capstone.herokuapp.com/" + "products/" + id);
+    //   let {
+    //     results
+    //   } = await res.data;
+    //   context.commit("setSingleProduct", results[0]);
+    // },
+    getSingleProducts: async (context, id) => {
+      let res = await fetch('https://node-backend-capstone.herokuapp.com/products/' +id);
+      let data = await res.json();
+      let result = data.results;
+      if (result) {
+        context.commit('setSingleProduct', result[0])
+      } else {
+        console.log('Get products failed')
+      }
     },
 
     //*ADD NEW PRODUCT*//
@@ -93,7 +115,7 @@ export default createStore({
       } = payload;
 
       try {
-        await fetch(artmart + "products", {
+        await fetch("https://node-backend-capstone.herokuapp.com/" + "products", {
             method: "POST",
             headers: {
               "Content-type": "application/json; charset=UTF-8",
@@ -143,50 +165,95 @@ export default createStore({
     },
 
     //*EDIT PRODUCT*//
-
     async editProduct(context, id) {
       try {
         fetch("https://node-backend-capstone.herokuapp.com/products/" + id.id, {
-            method: "PUT",
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            },
-            body: JSON.stringify(id),
-          })
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(id),
+        })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            context.dispatch("getProducts");
+            console.log(data)
+            context.dispatch("getProducts",
+            swal({
+              icon: "success",
+              buttons: false,
+              timer: 1000,
+            })
+            )
           })
-          .catch(console.log("error"));
+          .catch(console.log('error'));
       } catch (e) {
         console.log(e);
       }
     },
+    // async editProduct(context, id) {
+    //   try {
+    //     fetch("https://node-backend-capstone.herokuapp.com/products/" + id.id, {
+    //         method: "PUT",
+    //         headers: {
+    //           "Content-type": "application/json; charset=UTF-8",
+    //         },
+    //         body: JSON.stringify(id),
+    //       })
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         context.dispatch("getProduct");
+    //       })
+    //       .catch(console.log("error"));
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // },
 
     //*/********************//*PAINTINGS*//*****************************/*//
 
     //*GETTING ALL PAINTINGS *//
-
-    async getPaintings(context) {
-      let res = await axios.get(artmart + "paintings");
-      let {
-        results
-      } = await res.data;
-      if (results) {
-        context.commit("setPaintings", results);
+    getPaintings: async (context) => {
+      let res = await fetch('https://node-backend-capstone.herokuapp.com/paintings');
+      let data = await res.json();
+      let result = data.results;
+      if (result) {
+        context.commit('setPaintings', result)
+      } else {
+        console.log('Get paintings failed')
       }
     },
+    // async getPaintings(context) {
+    //   let res = await axios.get("https://node-backend-capstone.herokuapp.com/" + "paintings");
+    //   let {
+    //     results
+    //   } = await res.data;
+    //   if (results) {
+    //     context.commit("setPaintings", results);
+    //   }
+    // },
 
     //*GETTING SINGLE PAINTINGS *//
 
-    async getSinglePaintings(context, id) {
-      let res = await axios.get(artmart + "paintings/" + id);
-      let {
-        results
-      } = await res.data;
-      context.commit("setSinglePainting", results[0]);
+    getSinglePaintings: async (context, id) => {
+      let res = await fetch('https://node-backend-capstone.herokuapp.com/paintings/' +id);
+      let data = await res.json();
+      let result = data.results;
+      if (result) {
+        context.commit('setSinglePainting', result[0])
+      } else {
+        console.log('Get painting failed')
+      }
     },
+    // async getSinglePaintings(context, id) {
+    //   let res = await axios.get("https://node-backend-capstone.herokuapp.com/" + "paintings/" + id);
+    //   let {
+    //     results
+    //   } = await res.data;
+    //   context.commit("setSinglePainting", results[0]);
+    // },
+
+    
 
     //*ADD NEW PAINTINGS*//
 
@@ -201,7 +268,7 @@ export default createStore({
       } = payload;
 
       try {
-        await fetch(artmart + "paintings", {
+        await fetch("https://node-backend-capstone.herokuapp.com/paintings", {
             method: "POST",
             headers: {
               "Content-type": "application/json; charset=UTF-8",
@@ -242,12 +309,16 @@ export default createStore({
                 "Content-type": "application/json; charset=UTF-8",
               },
               body: JSON.stringify(id),
-            }
-          )
+            })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            context.dispatch("getPaintings");
+            context.dispatch("getPaintings",
+            swal({
+              icon: "success",
+              buttons: false,
+              timer: 1000,
+            }));
           })
           .catch(console.log("error"));
       } catch (e) {
@@ -278,32 +349,35 @@ export default createStore({
 
     //*GETTING ALL USERS *//
 
-    async getUsers(context) {
-      let res = await axios.get(artmart + "users");
-      let {
-        results
-      } = await res.data;
-      if (results) {
-        context.commit("setUsers", results);
+    getUsers: async (context) => {
+      let res = await fetch("https://node-backend-capstone.herokuapp.com/" + 'users');
+      let data = await res.json();
+      let result = data.results;
+      if (result) {
+        context.commit('setUsers', result)
+      } else {
+        console.log(`Loading...`);
       }
     },
 
     //*GETTING SINGLE USERS *//
 
-    async getUser(context, id) {
-      let res = await axios.get(artmart + "users/" + id);
-      let {
-        results
-      } = await res.data;
-      if (results) {
-        context.commit("setUser", results);
+    getUser: async (context, id) => {
+      let res = await fetch("https://node-backend-capstone.herokuapp.com/users/" +id);
+      let data = await res.json();
+      let result = data.results;
+      if (result) {
+        context.commit('setUser', result)
+      } else {
+        console.log(`Loading...`);
       }
     },
+
 
     //*DELETE A USER*//
 
     deleteUser: async (context, id) => {
-      fetch("https://node-backend-capstone.herokuapp.com/users/" + id, {
+      fetch("https://node-backend-capstone.herokuapp.com/users/" +id , {
           method: "DELETE",
         })
         .then((res) => res.json())
@@ -340,7 +414,7 @@ export default createStore({
         isAdmin
       } =
       payload;
-      await fetch(artmart + "users/" + id, {
+      await fetch("https://node-backend-capstone.herokuapp.com/" + "users/" + context.state.user.id , {
           method: "PUT",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -376,10 +450,10 @@ export default createStore({
 
     //*EDIT USERS*//
 
-    editUser(context, id) {
-      fetch("https://node-backend-capstone.herokuapp.com/users/" + id.id, {
+    editUser(context, user) {
+      fetch("https://node-backend-capstone.herokuapp.com/users/" + user.id, {
           method: "PUT",
-          body: JSON.stringify(id),
+          body: JSON.stringify(user),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
@@ -387,27 +461,18 @@ export default createStore({
         .then((editUser) => editUser.json())
         .then((data) => {
           console.log(data);
-          context.dispatch("getUsers");
+          context.dispatch("getUser");
         });
     },
     //*/********************//*CART*//*****************************/*//
 
     //*GET CART ITEMS *//
 
-    // async getCart(context, id) {
-    //   let res = await axios.get(artmart + "users/" + id + "/cart");
-    //   let { results } = await res.json(data);
-    //   if (results) {
-    //     context.commit("setCart", results);
-    //   }else{
-    //     console.log("Failed to get cart")
-    //   }
-    // },
 
     getCart: async (context) => {
       // fetch
       let res = await fetch(
-        artmart + "users/" + context.state.user.id + "/cart"
+        "https://node-backend-capstone.herokuapp.com/users/" + context.state.user.id + "/cart"
       );
       let data = await res.json();
       let result = data.results;
@@ -426,7 +491,7 @@ export default createStore({
       } = payload;
 
       try {
-        await fetch(artmart + "users/" + id + "/cart", {
+        await fetch("https://node-backend-capstone.herokuapp.com/users/" + context.state.user.id  + "/cart", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -435,15 +500,51 @@ export default createStore({
             id: id,
           }),
         });
-        context.dispatch("getCart", context.state.user.id);
+        context.dispatch("getCart", context.state.user.id, 
+        swal({
+          icon: "success",
+          title: "product added to cart",
+          buttons: false,
+          timer: 500,
+        }));
       } catch (e) {
         console.log(e);
       }
     },
 
-    //*DELETE ALL CART ITEMS *//
+    //*DELETE ONE CART ITEMS *//
 
-    //*DELETE ONE CART ITEM *//
+    deleteCartItem: async (context, id) => {
+      fetch("https://node-backend-capstone.herokuapp.com/users/" + context.state.user.id + "/cart/" + id, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          context.dispatch('getCart', context.state.user.id, 
+          swal({
+            icon: "success",
+            title: "product deleted from cart",
+            buttons: false,
+            timer: 1000,
+          }))
+        });
+    },
+
+    //*DELETE CART *//
+
+    clearCart: async (context, id) => {
+      fetch("https://node-backend-capstone.herokuapp.com/users/" +id+ "/cart", {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then(() => context.dispatch('getCart', context.state.user.id, 
+        swal({
+          icon: "success",
+          buttons: false,
+          timer: 500,
+        })
+        ));
+    },
 
     //*/********************//*VERIFICATION*//*****************************/*//
 
@@ -460,7 +561,7 @@ export default createStore({
         password
       } =
       payload;
-      await fetch(artmart + "register", {
+      await fetch("https://node-backend-capstone.herokuapp.com/" + "register", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -487,7 +588,7 @@ export default createStore({
               timer: 2000,
             }),
             router.push({
-              name: "login",
+              name: "allproducts",
             })
           )
         )
@@ -500,16 +601,17 @@ export default createStore({
               timer: 2000,
             }),
             router.push({
-              name: "login",
+              name: "allproducts",
             })
           )
         );
+        
     },
 
     //*LOGGING IN*//
 
     login(context, payload) {
-      fetch(artmart + "login", {
+      fetch("https://node-backend-capstone.herokuapp.com/" + "login", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -518,7 +620,7 @@ export default createStore({
         })
         .then((response) => response.json())
         .then((data) => {
-          if (data.msg === "Login Failed.") {
+          if (data.msg === "Incorrect Password or Email. Please try again.") {
             swal({
               icon: "error",
               title: `${data.msg}`,
@@ -536,7 +638,7 @@ export default createStore({
             });
             context.dispatch("getCart", data.user[0].id);
             router.push({
-              name: "home",
+              name: "allproducts",
             });
           }
         });

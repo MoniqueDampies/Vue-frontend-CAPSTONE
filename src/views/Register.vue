@@ -36,7 +36,7 @@
             <label class="user-label">Password</label>
         </div>
         <div>
-            <button v-on:click="submit">CREATE MY ACCOUNT</button>
+            <button @click="submit">CREATE MY ACCOUNT</button>
         </div>
     </form>
 

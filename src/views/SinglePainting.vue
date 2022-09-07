@@ -8,7 +8,7 @@
                     <h2 class="card-title1">{{ paintings.title }}</h2>
                     <h2 class="card-title">R{{ paintings.price }}</h2>
                     <!-- <h2 class="card-title">{{painting.description}}</h2> -->
-                    <button class="btn btn-black text-white text-black">Add to Cart</button>
+                    <button class="btn btn-black text-white text-black">Purchase</button>
                 </div>
             </div>
         </div>

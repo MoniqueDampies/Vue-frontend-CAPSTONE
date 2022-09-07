@@ -1,60 +1,17 @@
 <template>
-  <!-- <div class="hero-image">
-    <img src="https://i.postimg.cc/7YZwzHSJ/ceiling-painting-4912734-1920.jpg" defer>
-    <div class="hero-text">
-      <h1>THE FLAIR OF EXQUISITE HANDCRAFTED ART SUPPLIES</h1>
 
-      <router-link to="/allproducts"><button class="head-btn btn btn-black fw-6 bg-white text-black w-25">
-          OUR STORE
-        </button>
-      </router-link>
-    </div>
-  </div> -->
+  <!-- <Header/> -->
+  <!-- <HomeProds/> -->
 
-  <Header/>
-  <HomeProds/>
-  <!-- <div class="container bg-black">
-    <div v-if="products" class="row">
-      <h4 class="text-center text-white mt-4 mb-3">ART MART'S FINEST</h4>
-      <h3 class="text-center text-white mb-4">COLLECTOR’S EDITION</h3>
-      <div v-for="product in products" :key="product.id" class="card row mx-2 bg-black">
-        <div class="card-body">
-          <div class="bg-black">
-            <img :src="product.img" class="card-image img-fluid" alt="image" />
-            <h5 class="card-title">{{ product.title }}</h5>
-            <h5 class="card-category">{{ product.category }}</h5>
-            <h5>R {{ product.price }}.00</h5>
-          </div>
-        </div>
-      </div>
-      
-      <router-link to="/allproducts">
-              <button class="view-btn btn btn-black mt-5 text-white">
-                VIEW ALL PRODUCTS
-              </button>
-            </router-link>
-    </div>
-    
-  </div> -->
-  <!-- <div class="container w-100">
-    <img src="https://i.postimg.cc/7YZwzHSJ/ceiling-painting-4912734-1920.jpg">
-  </div>
-  <div class="box bg-black vh-50">
-    <h5 class="text-black">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, harum?</h5>
-  </div> -->
 </template>
 
 <script>
-  import Header from '../components/landingHeader.vue'
-import HomeProds from '../components/HomeProds.vue'
+//   import Header from '../components/landingHeader.vue'
+// import HomeProds from '../components/HomeProds.vue'
 export default {
   name: 'home',
   props: ["product"],
   computed: {
-    products() {
-      let limit = this.$store.state.products;
-      return limit.slice(0, 4)
-    }
   },
   mounted() {
     this.$store.dispatch("getProducts");
@@ -62,8 +19,8 @@ export default {
 
   },
   components: {
-    Header,
-    HomeProds
+    // Header,
+    // HomeProds
 }
 
 };

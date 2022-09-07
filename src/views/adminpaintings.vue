@@ -22,18 +22,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="paintings in paintings" :key="paintings.id">
-                    <td>{{ paintings.id }}</td>
-                    <td>{{ paintings.title }}</td>
-                    <td class="w-25">{{ paintings.category }}</td>
-                    <td class="w-25">{{ paintings.description }}</td>
-                    <td class="w-25"><img :src="paintings.img" class="img-fluid" alt="" defer /></td>
-                    <td class="w-25">R {{ paintings.price }}.00</td>
+                <tr v-for="painting in paintings" :key="painting.id">
+                    <td>{{ painting.id }}</td>
+                    <td>{{ painting.title }}</td>
+                    <td class="w-25">{{ painting.category }}</td>
+                    <td class="w-25">{{ painting.description }}</td>
+                    <td class="w-25"><img :src="painting.img" class="img-fluid" alt="" defer /></td>
+                    <td class="w-25">R {{ painting.price }}.00</td>
                     <td>
-                        <EditPaintingsModal :paintings="paintings" />
+                        <EditPaintingsModal :paintings="painting" />
                     </td>
                     <td> <button id="delete" class="b btn-layout bg-transparent"
-                            v-on:click="$store.dispatch('deletePainting', paintings.id,)">
+                        @click="deletePainting(painting.id)">
                             <i class="text-white fa-solid fa-trash"></i>
                         </button></td>
 
@@ -62,7 +62,6 @@ import EditPaintingsModal from '@/components/EditPaintingsModal.vue';
 
 export default {
     name: 'adminpaintings',
-    props: ["paintings"],
     mounted() {
         this.$store.dispatch("getPaintings");
     },
@@ -78,7 +77,7 @@ export default {
     },
     methods: {
         editpainting() {
-            return this.$store.dispatch("editpainting", this.paintings)
+            return this.$store.dispatch("editpainting", this.painting)
         },
         deletePainting(id) {
             console.log("Painting was deleted");

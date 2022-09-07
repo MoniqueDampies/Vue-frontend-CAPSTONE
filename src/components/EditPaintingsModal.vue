@@ -17,7 +17,7 @@
 
                             <div class="col-sm-8">
 
-                                <form @submit.prevent="editPainting" method="PUT" class="justify-content-center">
+                                <form @submit.prevent="editPainting" method="POST" class="justify-content-center">
 
                                     <label for="title">Title</label><br />
                                     <input class="w-100 bg-black text-white" type="text" v-model="paintings.title"
@@ -59,31 +59,25 @@
 <script>
 export default {
     name: "EditPaintingsModal",
-    props: ["paintings"],
+    props: ["painting"],
     data() {
         return {
-            title: "",
-            price: "",
-            category: "",
-            description: "",
-            size: "",
-            img: "",
+            title: '',
+            price: '',
+            category: '',
+            description: '',
+            size: '',
+            img: ''
         }
     },
     methods: {
         editPainting() {
-            this.$store.dispatch('editPainting', {
-                title: this.title,
-                category: this.category,
-                price: this.price,
-                description: this.description,
-                size: this.size,
-                img: this.img
-            })
+            console.log(this.painting)
+            this.$store.dispatch('editPainting', this.painting);
+            },
 
         }
     }
-}
 </script>
 
 <style scoped>

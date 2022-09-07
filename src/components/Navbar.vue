@@ -7,18 +7,23 @@
                 <router-link to="/">HOME</router-link>
                 <router-link to="/allproducts">SHOP ART SUPPLIES</router-link>
                 <router-link to="/allpaintings">SHOP ARTWORKS</router-link>
-                <router-link to="/about">ABOUT</router-link>
-                <router-link to="/contact">CONTACT US</router-link>
-                    <!-- admin table -->
+                <!-- <router-link to="/about">ABOUT</router-link>
+                <router-link to="/contact">CONTACT US</router-link> -->
+                <!-- admin table -->
                 <div v-if="user">
                     <router-link v-if="user.isAdmin == 'True'" to="/admin">ADMIN</router-link>
                 </div>
-                    <!-- admin table -->
+                <!-- admin table -->
                 <router-link to="/register">REGISTER</router-link>
                 <router-link to="/login">LOGIN</router-link>
                 <router-link to="/login"><i class="fa-solid fa-user"></i></router-link>
-                <button>
-                    <cart />
+                <div>
+                    <button>
+                        <cart />
+                    </button>
+                </div>
+                <button class="text-black">
+                    <i class="bi bi-box-arrow-right"></i>
                 </button>
             </nav>
         </div>
@@ -94,6 +99,8 @@ nav a.router-link-exact-active {
 
 button {
     outline: none;
+    border: none;
+    background: transparent;
 }
 
 .offcanvas-body {

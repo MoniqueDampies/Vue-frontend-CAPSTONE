@@ -2,15 +2,15 @@
     <section class="mb-6">
         <h1 class="text-white text-center">ADMIN</h1>
         <nav class="text-center justify-content-center">
-            <router-link to="/adminproducts"><button class="btn btn-black fw-6 text-white w-25">
+            <router-link to="/adminproducts"><button class="btn mb-2 btn-black fw-6 text-white w-25">
                     PRODUCTS
                 </button>
             </router-link>
-            <router-link to="/adminpaintings"><button class="btn btn-black fw-6 text-white w-25">
+            <router-link to="/adminpaintings"><button class="btn mb-2 btn-black fw-6 text-white w-25">
                     PAINTINGS
                 </button>
             </router-link>
-            <router-link to="/adminusers"><button class="btn btn-black fw-6 text-white w-25">
+            <router-link to="/adminusers"><button class="btn mb-2 btn-black fw-6 text-white w-25">
                     USERS
                 </button>
             </router-link>

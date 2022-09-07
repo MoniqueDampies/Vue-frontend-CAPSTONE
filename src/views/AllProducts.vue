@@ -1,6 +1,6 @@
 <template>
     
-    <div class="headerImage">
+    <div id="allproducts" class="headerImage">
         <img src="https://i.postimg.cc/d35GkSXm/vienna-1652804-1920.jpg">
     </div>
     <div class="main">
@@ -12,9 +12,16 @@
 <script>
 import ProductCard from '@/components/ProductCard.vue';
 export default {
-    name: 'allproducts',
+    name: '/allproducts',
     components: {
         ProductCard
+    },
+    
+
+    mounted() {
+        this.$store.dispatch("getProducts");
+        this.$store.commit("setSingleProduct", null);
+        // this.$store.dispatch('clearSingleProduct');
     }
 
 }
