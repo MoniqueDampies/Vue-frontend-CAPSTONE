@@ -1,5 +1,5 @@
 <template>
-    <section class="mb-6">
+    <section class="pt--3">
         <h1 class="text-white text-center">ADMIN</h1>
         <nav class="text-center justify-content-center">
             <router-link to="/adminproducts"><button class="btn mb-2 btn-black fw-6 text-white w-25">
@@ -26,8 +26,9 @@ export default {
 </script>
 
 <style>
-.section {
-    margin-bottom: 5rem;
+section{
+    position: relative;
+    top: -5rem;
 }
 
 .btn {

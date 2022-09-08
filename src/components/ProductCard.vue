@@ -4,7 +4,7 @@
             <div v-if="products" class="row justify-content-center">
                 <input type="search" placeholder="Search Products" class="search w-75  bg-black text-white mt-4 mb-3"
                     v-model="search">
-                <div class="col-sm-2 text-start  mt-4 mb-3">
+                <div id="filter" class="col-sm-2 text-start  mt-4 mb-3">
                     <select class="w-100" v-model="search">
                         <option></option>
                         <option value="Acrylic">Acrylic</option>
@@ -17,22 +17,20 @@
                     </select>
                 </div>
                 <div v-for="product in products" :key="product.id" class="card row mx-2  bg-black">
+                    <router-link :to="{
+                                name: 'singleproduct',
+                                params: { id: product.id },
+                            }">
                     <div class="card-body">
                         <div class="bg-black">
                             <img :src="product.img" class="card-image img-fluid" alt="image" />
                             <h5 class="card-title">{{ product.title }}</h5>
                             <h5 class="card-category">{{ product.category }}</h5>
                             <h5>R {{ product.price }}.00</h5>
-                            <router-link :to="{
-                                name: 'singleproduct',
-                                params: { id: product.id },
-                            }">
-                                <button class="btn btn-black text-center btn-outline-black text-white w-5">
-                                    View
-                                </button>
-                            </router-link>
                         </div>
                     </div>
+                    
+                </router-link>
                 </div>
             </div>
             <div v-else>
@@ -74,36 +72,49 @@ export default {
 </script>
 
 <style scoped>
+
+#filter{
+    position: relative;
+    right: 2rem;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .search {
-    padding: 0.1rem;
+    padding: 0.2rem;
 }
 
 ::placeholder {
     text-align: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .card {
     background: rgb(0, 0, 0);
     /* border: 1px solid #e8e8e8; */
-    padding: 0;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    padding: 4rem;
 }
 
-button {
+button,input,select {
     color: #090909;
     padding: 0.7em 1.7em;
     display: block;
     margin-left: auto;
     margin-right: auto;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     /* border-radius: 0.5em; */
     /* background: #e8e8e8; */
     border: 1px solid #e8e8e8;
     transition: all 0.3s;
     /* box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; */
 }
+
 
 router-link {
     text-decoration: none;
@@ -122,8 +133,8 @@ nav {
 
 .card-image {
     object-fit: cover;
-    height: 30rem;
-    width: 30rem;
+    height: 35rem;
+    width: 33rem;
     border-radius: 1px;
     border: 1px;
     padding-bottom: 1rem;
@@ -136,13 +147,14 @@ section {
 
 select {
     color: white;
-    background-color: #090909;
-    padding: 0.16rem;
+    background-color: #090909;  
+      padding: 0.49rem;
+
 }
 
 .card {
     height: 43rem;
-    width: 25rem;
+    width: 26rem;
     padding: 0;
     margin-bottom: 10px;
     padding-bottom: 3rem;

@@ -1,5 +1,6 @@
 <template>
     <AdminNav />
+    <div>
     <!-- subheading -->
     <h5 class="text-white mt-2 text-center">PRODUCTS</h5>
     <!-- add products modal button -->
@@ -8,7 +9,7 @@
             ADD PRODUCTS
         </button>
     </router-link>
-
+</div>
 
     <section v-if="products" class="admin mt-4 vh-100">
         <table class="table align-middle mb-0 table-black text-white container" style="overflow-x:auto;">
@@ -51,7 +52,6 @@
     </section>
     <div v-else>
         <Loader />
-
     </div>
 
 
@@ -95,7 +95,15 @@ export default {
 </script>
 
 <style scoped>
+div{
+    position: relative;
+    top: -5rem;
+}
 
+section {
+    position: relative;
+    top: -6rem;
+}
 
 button {
     display: block;

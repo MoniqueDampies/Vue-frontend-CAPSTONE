@@ -1,10 +1,10 @@
 <template>
-    <button class="bg-transparent" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + paintings.id">
+    <button class="bg-transparent" data-bs-toggle="modal" :data-bs-target="'#exampleModal' + painting.id">
         <i class="text-white fas fa-pen"></i></button>
 
 
     <!-- Modal1 -->
-    <div class="modal fade" :id="'exampleModal' + paintings.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" :id="'exampleModal' + painting.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -20,23 +20,23 @@
                                 <form @submit.prevent="editPainting" method="POST" class="justify-content-center">
 
                                     <label for="title">Title</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.title"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="painting.title"
                                         placeholder="Enter Painting Title" required /><br />
 
                                     <label for="category">Painting Category:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.category"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="painting.category"
                                         placeholder="Enter Painting Category" required /><br />
 
                                     <label for="price">Painting Price:</label><br />
-                                    <input class="w-100 bg-black text-white" type="number" v-model="paintings.price"
+                                    <input class="w-100 bg-black text-white" type="number" v-model="painting.price"
                                         placeholder="Enter Painting Price" required /><br />
 
                                     <label for="description">Painting Description:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.description"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="painting.description"
                                         placeholder="Enter Painting Description" required /><br />
 
                                     <label for="img">Painting Image:</label><br />
-                                    <input class="w-100 bg-black text-white" type="text" v-model="paintings.img"
+                                    <input class="w-100 bg-black text-white" type="text" v-model="painting.img"
                                         placeholder="Add Painting postimage direct link" required /><br />
 
                                     <button class="mt-4 w-100 btn-layout bg-black text-white" data-bs-dismiss="modal" @click="submit">

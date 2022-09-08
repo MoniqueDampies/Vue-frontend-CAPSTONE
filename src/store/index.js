@@ -632,7 +632,7 @@ export default createStore({
             console.log("sign in");
             swal({
               icon: "success",
-              title: `Welcome`,
+              title: `Welcome ${data.user[0].firstName}`,
               buttons: false,
               timer: 2000,
             });

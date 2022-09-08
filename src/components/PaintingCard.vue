@@ -2,21 +2,28 @@
     <section class="paintings bg-black">
         <div class="container">
             <div v-if="paintings" class="row mx-auto justify-content-center">
-                <input type="text" placeholder="Search Paintings" class="w-75 search mt-5 bg-black text-white mb-5" v-model="search">
+                <input type="text" placeholder="Search Paintings" class="w-75 search mt-4 bg-black text-white"
+                    v-model="search">
+                <div class="col-sm-2 text-start">
+                    <select class="w-100" v-model="search">
+                        <option></option>
+                        <option value="Ascending">Lowest to Highest</option>
+                        <option value="Descending">Highest to Lowest</option>
+                    </select>
+                </div>
                 <div v-for="paintings in paintings" :key="paintings.id" class="card row  mx-auto px-4 bg-black">
-                    <div class="card-body bg-black">
-                        <div class="bg-black">
-                            <img :src="paintings.img" class="card-image img-fluid" alt="image" />
-                            <h5 class="card-title">{{ paintings.title }}</h5>
-                            <router-link :to="{
-                                name: 'singlepainting',
-                                params: { id: paintings.id },
-                            }"><button class="btn btn-black text-white w-5">
-                                    View
-                                </button>
-                            </router-link>
+                    <router-link :to="{
+                        name: 'singlepainting',
+                        params: { id: paintings.id },
+                    }">
+                        <div class="card-body bg-black">
+                            <div class="bg-black">
+                                <img :src="paintings.img" class="card-image img-fluid" alt="image" />
+                                <h5 class="card-title">{{ paintings.title }}</h5>
+                                <h4 class="card-price">R {{ paintings.price }}.00</h4>
+                            </div>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </div>
             <div v-else>
@@ -53,30 +60,36 @@ export default {
 </script>
 
 <style scoped>
-select{
+
+a{
+    text-decoration: none;
+    color: white;
+}
+select {
     padding: 0.2rem;
 }
 
-::placeholder{
+::placeholder {
     text-align: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .card {
     padding: 4rem;
-    padding-left: 2rem;
-    /* background: rgb(236, 236, 236); */
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    /* border: 1px solid white; */
+    min-height: 42rem;
+
 }
 
-button {
+button, input, select {
     color: #090909;
     padding: 0.7em 1.7em;
-    font-size: 18px;
+    font-size: 15px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
     /* border-radius: 0.5em; */
     /* background: #e8e8e8; */
     border: 1px solid #e8e8e8;
@@ -89,15 +102,15 @@ button:active {
     /* box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff; */
 }
 
-.search{
+/* .search {
     height: 2rem;
-}
+} */
 
 
 .card-image {
     object-fit: cover;
-    height: 25rem;
-    width: 25rem;
+    height: 37rem;
+    width: 35rem;
     border-radius: 1px;
 }
 
@@ -107,16 +120,26 @@ section {
 }
 
 .card {
-    height: 37rem;
-    width: 33rem;
-    margin-bottom: 10px;
+    height: 46rem;
+    width: 40rem;
+    /* margin-bottom: 4rem; */
     padding: 1rem;
     padding-bottom: 3rem;
     /* border: 1px solid #e8e8e8; */
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
 }
 
 h5 {
     padding-top: 1rem;
+}
+
+
+select {
+    color: white;
+    background-color: #090909;
+    padding: 0.49rem;
+    position: relative;
+    right: 2rem;
+    top: 1.3rem;
 }
 </style>

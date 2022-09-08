@@ -1,6 +1,8 @@
 <template>
     <AdminNav />
-    <h4 class="text-white mt-2 text-center">USERS</h4>
+    <div>
+        <h4 class="text-white mt-2 text-center">USERS</h4>
+    </div>
     <section v-if="users" class="admin mt-4 vh-100">
         <table class="table align-middle mb-0 text-white table-black container" style="overflow-x:auto;">
             <thead>
@@ -74,12 +76,12 @@ export default {
     },
     methods: {
         editUser() {
-          return this.$store.dispatch("editUser", this.user)
-            },
+            return this.$store.dispatch("editUser", this.user)
+        },
         deleteUser(id) {
             console.log("User was deleted");
             return this.$store.dispatch("deleteUser", id);
-            
+
         }
     }
 
@@ -87,6 +89,16 @@ export default {
 </script>
 
 <style scoped>
+div {
+    position: relative;
+    top: -5rem;
+}
+
+section {
+    position: relative;
+    top: -6rem;
+}
+
 .img-fluid {
     width: 10rem;
 }

@@ -56,6 +56,7 @@ export default {
 
 <style scoped>
 
+
 #delete{
     border:none;
 }
@@ -63,5 +64,13 @@ export default {
 #cart{
     border: 1px solid black;
     margin-bottom: 10px;
+}
+
+.offcanvas{
+    z-index: 100;
+}
+
+#offcanvasRight{
+    z-index: 20;
 }
 </style>
