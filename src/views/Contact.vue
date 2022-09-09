@@ -5,51 +5,35 @@
                 <div class="col-12 col-lg-9 col-xl-7">
                     <section>
                         <div class="card-body">
-                            <h2 class="pt--5 mb-5 text-center">BECOME A PART OF THE ART MART COMMUNITY!
+                            <h2 class=" mb-5 text-center">BECOME A PART OF THE ART MART COMMUNITY!
                             </h2>
                             <form id="contact-form" name="contact-form" action="https://formspree.io/f/myyvknyd"
                                 method="POST">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="md-form mb-0">
-                                            <input type="name" id="name" name="name" class="form-control"
-                                                placeholder="Enter Your Fullname" required>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
+
+                                <div class="input-group">
+                                    <input required="" type="text" name="fullName" autocomplete="off" class="input">
+                                    <label class="user-label">Full Name</label>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            <input type="email" id="email" name="email" class="form-control"
-                                                placeholder="Enter Email Address" required>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div id="con" class="col-md-6">
-                                        <div class="md-form mb-0">
-                                            <input type="number" id="number" name="number" maxlength="10" minlength="10"
-                                                autocomplete="off" class="form-control"
-                                                placeholder="Enter Contact Number">
-                                        </div>
-                                    </div>
-                                    <br>
+<br>
+                                <div class="input-group">
+                                    <input required="" type="email" name="email" autocomplete="off" class="input">
+                                    <label class="user-label">Email Address</label>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="md-form">
-                                            <textarea type="commit" id="comment" name="comment" rows="2"
-                                                class="form-control md-textarea" placeholder="Your Comments"
-                                                autocomplete="off"></textarea>
-                                        </div>
-                                    </div>
+<br>
+                                <div class="input-group">
+                                    <input required="" type="text" name="phone" maxlength="10" minlength="10"
+                                        autocomplete="off" class="input">
+                                    <label class="user-label">Contact number</label>
                                 </div>
-                                <br>
+<br>
+                                <div class="input-group">
+                                    <input required="" type="text" name="comment" class=" input"
+                                        autocomplete="off">
+                                    <label class="user-label">Comments</label>
+                                </div>
+<br>
                                 <div class="text-center col-md-12">
-                                    <button type="submit" class="btn ">Submit</button>
+                                    <button type="submit" target="_blank" class="btn ">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -69,10 +53,9 @@ export default {
 </script>
     
 <style scoped>
-
-section{
+section {
     position: relative;
-    top: -2rem;
+    top: -5rem;
 }
 
 #footer {
@@ -82,37 +65,50 @@ section{
     z-index: -5;
 }
 
-input,
-textarea {
-    border-radius: 0;
-    color: white;
-    background: black;
-    border: 1px solid white;
-    padding: 1rem;
-    outline: none !important;
-    box-shadow: none;
-}
-
-input:focus {
-    border-radius: 0;
-    color: white;
-    background: black;
-    border: 1px solid white;
-    padding: 1rem;
-    outline: none !important;
-    box-shadow: none;
+i.input-group {
+    /* position: relative; */
+    /* left: 36rem; */
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 1rem;
+    /* top: 1rem; */
 
 }
 
-textarea:focus {
-    border-radius: 0;
-    color: white;
-    background: black;
-    border: 1px solid white;
+.input {
+    border: solid 1.5px #f5f5f5;
+    /* border-radius: 10rem; */
+    background: none;
     padding: 1rem;
-    outline: none !important;
-    box-shadow: none;
+    /* padding-top: 1rem; */
+    width: 100%;
+    font-size: 1rem;
+    color: #f5f5f5;
+    transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.user-label {
+    position: absolute;
+    left: 15px;
+    color: #e8e8e8;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus,
+input:valid {
+    outline: none;
+    border: 1.5px solid #f5f5f5;
+}
+
+.input:focus~label,
+input:valid~label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: #000000;
+    padding: 0 .2em;
+    color: #f5f5f5;
 }
 
 ::placeholder {
@@ -128,6 +124,12 @@ button {
     width: 100%;
     background: rgb(255, 255, 255);
 
+}
+
+button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff !important;
 }
 
 form {

@@ -1,35 +1,41 @@
 <template>
     <section id="section">
-    <div v-if="user" class="container w-100 ">
-        <div id="logout" class="row w-25">
-            <button @click=reloadPage()> @LOGOUT</button>
-        </div>
-        <section>
-            <div id="account" class="row py-5">
-                <hr>
-                <h3 class="mb-5">MY ACCOUNT</h3>
-                <h4>Welcome back {{user.firstName}} {{user.lastName}}!</h4>
+        <div v-if="user" class="container w-100 ">
 
+            <div id="logout" class="row w-50">
+                <button @click=reloadPage()> LOGOUT</button>
             </div>
-            <div class="row">
-                <hr>
-                <div id="orders" class="col-md-8">
-                    
-                    <h3 class="orders">MY ORDERS</h3>
-                    <h5>You haven't placed any orders yet
-                    </h5>
+            <section>
+                <div id="account" class="row py-5">
+                    <hr>
+                    <h3 class="mb-5">MY ACCOUNT</h3>
+                    <h4>Welcome back {{user.firstName}} {{user.lastName}}!</h4>
+                    <hr>
                 </div>
-                <div id="address" class="col-md-4">
-                    <h3>PRIMARY ADDRESS</h3>
-                    <h5>{{user.firstName}} {{user.lastName}}</h5>
-                    <h5>{{user.province}}</h5>
-                    <h5>{{user.country}}</h5>
-                    <button>EDIT ADDRESS</button>
+                <div class="row">
+                    <div id="orders" class="col-md-8">
+
+                        <h3 class="orders">MY ORDERS</h3>
+                        <h5>You haven't placed any orders yet
+                        </h5>
+                    </div>
+                    <div id="address" class="col-md-4">
+                        <h3>PRIMARY ADDRESS</h3>
+                        <h5>{{user.firstName}} {{user.lastName}}</h5>
+                        <h5>{{user.province}}</h5>
+                        <h5>{{user.country}}</h5>
+
+                        <button class="mt-4 text-danger" @click=reloadPage()> Delete your account?</button>
+
+
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
-</section>
+            </section>
+        </div>
+        <div v-else>
+            <h1 class="text-center">Please Log in</h1>
+        </div>
+    </section>
     <Footer id="footer" />
 </template>
 

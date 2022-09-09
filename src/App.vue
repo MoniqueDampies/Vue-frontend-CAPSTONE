@@ -17,20 +17,24 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Jomolhari&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Jomolhari&display=swap');
+/* @media only screen and (max-width: 1350px) {
+  
+    section {
+        margin-top: 6rem;
+    }
+    
+  } */
+  
+  
+    section {
+        margin-top: 6rem;
+    }
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   outline: none;
-}
-
-.btn{
-	box-shadow: none !important
-}
-
-.btn-close {
-	box-shadow: none !important
 }
 
 body{
@@ -40,16 +44,23 @@ body{
   overflow-x: hidden;
   font-family: 'Jomolhari', serif;
 }
-
 a{
   text-decoration: none;
   outline: none;
 }
+.btn{
+	box-shadow: none !important
+}
+.btn-close {
+	box-shadow: none !important
+}
+.nav-link{
+  color: black;
+  text-decoration: none;
+}
 
-/* a:active{
-  outline: none;
-} */
-
-
+.nav-link:hover{
+  color: black;
+}
 
 </style>

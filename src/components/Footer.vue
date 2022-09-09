@@ -1,5 +1,5 @@
 <template>
-    <div id="footer">
+    <footer id="footer">
         <div class="container bg-black">
             <hr>
             <div class="row">
@@ -16,7 +16,6 @@
                 <div id="CS" class="col col-lg-3 col-sm-6">
                     <ul class="customer1">
                         <li>CUSTOMER SUPPORT</li>
-                        <li>Search</li>
                         <li>FAQs</li>
                         <li>Contact Us</li>
                         <li>Terms of Service</li>
@@ -27,7 +26,6 @@
                     <ul class="commitment">
                         <li>OUR COMMITMENT</li>
                         <li>✓ 100% Satisfaction Guarantee </li>
-                        <li>✓ Customer Support </li>
                         <li>✓ Premium Quality Products</li>
                         <li>✓ Cruelty-Free</li>
                         <li>✓ Handcrafted</li>
@@ -39,6 +37,7 @@
                         <li>INSTAGRAM</li>
                         <li>FACEBOOK</li>
                         <li>TWITTER</li>
+                        <li>TIK TOK</li>
                     </ul>
                 </div>
             </div>
@@ -47,7 +46,7 @@
                 <h5>2022 &copy; Monique Dampies</h5>
             </div>
         </div>
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -63,6 +62,7 @@ export default {
     width: 100%;
     height: 2.5rem;
     z-index: 2;
+    padding-top: 10rem;
     /* Footer height */
 }
 

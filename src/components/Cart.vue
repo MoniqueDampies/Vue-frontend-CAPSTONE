@@ -1,29 +1,38 @@
 <template>
-    <!-- cart button -->
-    <button class="btn btn-black text-black" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"><i class="fa-solid fa-bag-shopping"></i></button>
+    <!-- Button trigger modal -->
+    <button class="btn btn-black text-black" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="fa-solid fa-bag-shopping"></i>
+    </button>
 
-    <!-- CART BODY -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <!-- <h5 class="text-black" id="offcanvasRightLabel">CART</h5> -->
-            <button type="button" class="btn-close text-black text-reset" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body text-black">
-            <div id="cart" v-for="(product, index) in cart" :key="index">
-               <strong> {{ product.productData[0].title }}</strong> <br>
-                <img :src="product.productData[0].img" class="card-image w-50 img-fluid" alt="image" />
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart" v-for="(product, index) in cart" :key="index">
+                        <h4> {{ product.productData[0].title }} </h4>
+                        <img :src="product.productData[0].img" class="card-image w-50 img-fluid" alt="image" />
 
-                R{{ product.productData[0].price }}.00 <br>
-                {{ product.productData[0].category }} <br>
-                <button id="delete" class="b bg-transparent btn-layout" @click="deleteCartItem(product.cart_id)">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
+                       <h3> R{{ product.productData[0].price }}.00 </h3>
+                       <h5>{{ product.productData[0].category }} </h5> 
+                        <button id="delete" class="b bg-transparent btn-layout"
+                            @click="deleteCartItem(product.cart_id)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <hr>
+                    </div>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"  @click="clearCart()" ><i class="fa-solid fa-trash"></i>  Clear cart</button>
+                    <button type="button" class="btn btn-dark text-white">Checkout</button>
+                </div>
             </div>
-            <!-- <button id="delete" class="b bg-transparent text-danger btn-layout" @click="clearCart(cart_id)">
-                    <i class="fa-solid fa-trash"></i>
-                </button> -->
         </div>
     </div>
 </template>
@@ -31,9 +40,6 @@
 <script>
 export default {
     name: 'cart',
-    mounted() {
-        this.$store.dispatch('getUser');
-    },
     computed: {
         cart() {
             return this.$store.state.cart
@@ -55,22 +61,16 @@ export default {
 </script>
 
 <style scoped>
-
-
-#delete{
-    border:none;
-}
-
 #cart{
-    border: 1px solid black;
-    margin-bottom: 10px;
+    color: black;
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
 }
 
-.offcanvas{
-    z-index: 100;
-}
 
-#offcanvasRight{
-    z-index: 20;
+
+button{
+    border: none;
 }
 </style>

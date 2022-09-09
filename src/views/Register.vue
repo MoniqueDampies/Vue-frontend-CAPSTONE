@@ -85,6 +85,7 @@ export default {
 section{
     position: relative;
     top: -3rem;
+    padding-bottom: 5rem;
 }
 
 #footer{
@@ -93,7 +94,7 @@ section{
     padding-top: 16rem;
     z-index: -5;
 }
-/* From uiverse.io by @alexruix */
+
 .input-group {
     /* position: relative; */
     /* left: 36rem; */
@@ -173,16 +174,8 @@ form{
     margin-left: auto;
 }
 
-@media only screen and (max-width: 1075px) {
-    form{
-    /* border: 2px solid white; */
-    width: 48%;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-}
 
-}
+
 
 @media only screen and (max-width: 994px) {
     form{

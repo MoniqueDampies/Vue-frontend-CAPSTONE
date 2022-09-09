@@ -85,13 +85,6 @@ export default createStore({
 
     //*GETTING SINGLE PRODUCTS *//
 
-    // async getSingleProducts(context, id) {
-    //   let res = await axios.get("https://node-backend-capstone.herokuapp.com/" + "products/" + id);
-    //   let {
-    //     results
-    //   } = await res.data;
-    //   context.commit("setSingleProduct", results[0]);
-    // },
     getSingleProducts: async (context, id) => {
       let res = await fetch('https://node-backend-capstone.herokuapp.com/products/' +id);
       let data = await res.json();
@@ -532,18 +525,33 @@ export default createStore({
 
     //*DELETE CART *//
 
-    clearCart: async (context, id) => {
-      fetch("https://node-backend-capstone.herokuapp.com/users/" +id+ "/cart", {
+    // clearCart: async (context, id) => {
+    //   fetch("https://node-backend-capstone.herokuapp.com/users/" +id+ "/cart", {
+    //     method: "DELETE",
+    //   })
+    //     .then((res) => res.json())
+    //     .then(() => context.dispatch('getCart', context.state.user.id, 
+    //     swal({
+    //       icon: "success",
+    //       buttons: false,
+    //       timer: 500,
+    //     })
+    //     ));
+    // },
+    clearCart: async (context) => {
+      fetch("https://node-backend-capstone.herokuapp.com/users/" + context.state.user.id + "/cart", {
         method: "DELETE",
       })
         .then((res) => res.json())
-        .then(() => context.dispatch('getCart', context.state.user.id, 
-        swal({
-          icon: "success",
-          buttons: false,
-          timer: 500,
+        .then((data) => {
+          context.commit('setCart', null);
+          swal({
+            icon: "success",
+            buttons: false,
+            timer: 1000,
+          })
+   
         })
-        ));
     },
 
     //*/********************//*VERIFICATION*//*****************************/*//
@@ -583,12 +591,12 @@ export default createStore({
             json,
             swal({
               icon: "success",
-              title: `Welcome`,
+              title: `Registration Successful`,
               buttons: false,
               timer: 2000,
             }),
             router.push({
-              name: "allproducts",
+              name: "login",
             })
           )
         )
@@ -596,12 +604,12 @@ export default createStore({
           context.commit(
             swal({
               icon: "success",
-              title: `Registration Successfull`,
+              title: `Registration Successful`,
               buttons: false,
               timer: 2000,
             }),
             router.push({
-              name: "allproducts",
+              name: "login",
             })
           )
         );
