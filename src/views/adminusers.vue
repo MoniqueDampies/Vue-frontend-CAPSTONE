@@ -97,6 +97,7 @@ div {
 section {
     position: relative;
     top: -6rem;
+    overflow-x: auto;
 }
 
 .img-fluid {

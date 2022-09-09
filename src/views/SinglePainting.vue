@@ -53,7 +53,7 @@
 
     </div>
     
-    <Footer id="footer" />
+    <!-- <Footer id="footer" /> -->
 </template>
 
 <script>

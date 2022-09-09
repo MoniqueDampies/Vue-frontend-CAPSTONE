@@ -4,11 +4,11 @@
         <img src="https://i.postimg.cc/wjCFSFCw/pexels-pixabay-159862.jpg">
     </div>
 
-    <div class="main bg-black vh-100">
-        <h1 class="header-text text-center">ALL PAINTINGS PAGE</h1>
+    <div class="main bg-black">
+        <h1 class="header-text text-center">ALL PAINTINGS</h1>
         <PaintingCard />
     </div>
-    <Footer id="footer" />
+    <!-- <Footer id="footer" /> -->
 </template>
 
 <script>
@@ -28,13 +28,13 @@ export default {
     h1{
     font-size: 3.2rem;
 }
-#footer {
+/* #footer {
     position: relative;
     bottom: -200rem;
     padding-top: 1rem;
-    z-index: -5;
+    z-index: -5; */
     /* border: 2PX SOLID white; */
-}
+/* } */
 .header-text {
     display: block;
     margin-top: -1.9rem;
@@ -129,13 +129,13 @@ img {
     h1{
     font-size: 3.2rem;
 }
-#footer {
+/* #footer {
     position: relative;
     bottom: -100rem;
     padding-top: 1rem;
     border: 2px solid white;
     /* z-index: -5; */
-}
+/*} */
 .header-text {
     display: block;
     margin-top: -1.9rem;

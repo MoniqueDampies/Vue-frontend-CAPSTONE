@@ -42,7 +42,7 @@
         </div>
     </form>
 </section>
-    <Footer id="footer"/>
+    <!-- <Footer id="footer"/> -->
 
 </template>
 

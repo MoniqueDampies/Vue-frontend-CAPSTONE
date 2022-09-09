@@ -41,6 +41,7 @@
                 </tr>
             </tbody>
         </table>
+    <!-- <Footer /> -->
 
         <router-link to="/admin">
             <button class="btn btn-black mt-3 text-white w-25">
@@ -60,6 +61,7 @@
 import AdminNav from '@/components/Admin.vue';
 import Loader from '@/components/Loader.vue';
 import EditPaintingsModal from '@/components/EditPaintingsModal.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
     name: 'adminpaintings',
@@ -72,10 +74,11 @@ export default {
         },
     },
     components: {
-        AdminNav,
-        Loader,
-        EditPaintingsModal
-    },
+    AdminNav,
+    Loader,
+    EditPaintingsModal,
+    Footer
+},
     methods: {
         editpainting() {
             return this.$store.dispatch("editpainting", this.painting)
@@ -94,6 +97,7 @@ export default {
 section {
     position: relative;
     top: -6rem;
+    overflow-x: auto;
 }
 
 .img-fluid {
@@ -109,5 +113,11 @@ button {
 div{
     position: relative;
     top: -5rem;
+}
+
+@media only screen and (max-width: 500px){
+nav button {
+    font-size: .5rem;
+}
 }
 </style>

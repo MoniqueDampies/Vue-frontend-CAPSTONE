@@ -39,8 +39,9 @@
     <div v-else>
         <Loader />
     </div>
-    <footer>
-        <Footer id="footer" /></footer>
+    <!-- <footer> -->
+        <!-- <Footer id="footer" /> -->
+    <!-- </footer> -->
 </template>
 <script>
 import Loader from '@/components/Loader.vue';

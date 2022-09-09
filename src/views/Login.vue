@@ -17,7 +17,7 @@
             </div>
         </form>
     </section>
-    <Footer />
+    <!-- <Footer /> -->
 </template>
 
 <script>

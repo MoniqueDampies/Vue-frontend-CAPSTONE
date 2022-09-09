@@ -115,12 +115,27 @@ const routes = [
     path: '/register',
     name: 'register',
     component: ()=>import('@/views/register.vue')
+  },
+  {
+    path: '/privacypolicy',
+    name: 'privacypolicy',
+    component: ()=>import('@/views/privacypolicy.vue')
+  },
+  {
+    path: '/tos',
+    name: 'tos',
+    component: ()=>import('@/views/tos.vue')
+  },
+  {
+    path: '/shipping',
+    name: 'shipping',
+    component: ()=>import('@/views/shipping.vue')
+  },
+  {
+    path: '/refund',
+    name: 'refund',
+    component: ()=>import('@/views/refund.vue')
   }
-  // {
-  //   path: '/landing',
-  //   name: 'landing',
-  //   component: landing
-  // }
 ]
 
 

@@ -4,11 +4,11 @@
         <img src="https://i.postimg.cc/d35GkSXm/vienna-1652804-1920.jpg">
     </div>
     <div class="main">
-        <h1 class="header-text text-center">ALL PRODUCTS PAGE</h1>
+        <h1 class="header-text text-center">ALL PRODUCTS</h1>
         <ProductCard />
     </div>
     
-    <Footer id="footer" />
+    <!-- <Footer id="footer" /> -->
 </template>
 
 <script>
@@ -205,6 +205,10 @@ img {
 
 }
 @media only screen and (max-width: 900px){
+    #filter {
+        left: 0;
+        widows: 74%;
+    }
 
 }
 @media only screen and (max-width: 800px){
@@ -225,8 +229,8 @@ img {
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
     /* background-position: center bottom; */
-    /* width: 110%;
-  height: 100%; */
+    width: 100%;
+  /* height: 100%; */
     z-index: -10;
     overflow: hidden;
     margin-top: 5rem;
@@ -287,7 +291,7 @@ h1 {
 }
 
 img {
-    width: 100%;
+    width: 110%;
     /* left: 1rem; */
     z-index: -1;
     /* position: relative; */
@@ -318,7 +322,7 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center bottom;
-    width: 110%;
+    width: 100%;
   height: 100%;
     z-index: -10;
     overflow: hidden;
@@ -405,7 +409,7 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center bottom;
-    width: 110%;
+    width: 100%;
   /* height: 100%; */
     z-index: -10;
     overflow: hidden;
@@ -493,7 +497,7 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center bottom;
-    width: 110%;
+    width: 100%;
   /* height: 100%; */
     z-index: -10;
     overflow: hidden;
@@ -503,6 +507,7 @@ img {
     /* overflow:hidden; */
     backface-visibility: hidden;
 }
+
 
 @-webkit-keyframes scale {
     0% {
@@ -555,7 +560,7 @@ h1 {
 }
 
 img {
-    width: 100%;
+    width: 150%;
     /* left: 1rem; */
     z-index: -1;
     position: relative;
@@ -563,4 +568,5 @@ img {
     /* height: 63rem; */
 }
 }
+
 </style>

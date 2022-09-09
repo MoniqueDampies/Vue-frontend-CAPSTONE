@@ -7,19 +7,31 @@
                 <div id="OP" class="col col-lg-3 col-sm-6  order-first">
                     <ul class="policies">
                         <li>OUR POLICIES</li>
-                        <li>Privacy Policy</li>
-                        <li>Refund Policy</li>
-                        <li>Shipping Policy</li>
-                        <li>Terms of Service</li>
+                        <a href="/privacypolicy">
+                            <li>Privacy Policy</li>
+                        </a>
+                        <a href="/refund">
+                            <li>Refund Policy</li>
+                        </a>
+                        <a href="/shipping">
+                            <li>Shipping Policy</li>
+                        </a>
+                        <a href="/tos">
+                            <li>Terms of Service</li>
+                        </a>
                     </ul>
                 </div>
                 <div id="CS" class="col col-lg-3 col-sm-6">
                     <ul class="customer1">
                         <li>CUSTOMER SUPPORT</li>
                         <li>FAQs</li>
-                        <li>Contact Us</li>
-                        <li>Terms of Service</li>
-                        <li>Refund policy</li>
+                      <a href="/contact"> <li>Contact Us</li></a> 
+                        <a href="/tos">
+                            <li>Terms of Service</li>
+                        </a>
+                        <a href="/refund">
+                            <li>Refund policy</li>
+                        </a>
                     </ul>
                 </div>
                 <div id="OC" class="col col-lg-3 col-sm-6">
@@ -32,12 +44,12 @@
                     </ul>
                 </div>
                 <div id="SM" class="col order-last">
-                    <ul class="social media">
+                    <ul class="social media  text-center">
                         <li>FOLLOW OUR SOCIAL MEDIA</li>
-                        <li>INSTAGRAM</li>
-                        <li>FACEBOOK</li>
-                        <li>TWITTER</li>
-                        <li>TIK TOK</li>
+                        <li><i class="fa-brands fa-instagram"></i></li>
+                        <li><i class="fa-brands fa-facebook"></i></li>
+                        <li><i class="fa-brands fa-twitter"></i></li>
+                        <li><i class="fa-brands fa-linkedin"></i></li>
                     </ul>
                 </div>
             </div>
@@ -56,13 +68,18 @@ export default {
 </script>
 
 <style scoped>
+a{
+    text-decoration: none;
+    color: white;
+}
+
 #footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: 2.5rem;
     z-index: 2;
-    padding-top: 10rem;
+    /* padding-top: 10rem; */
     /* Footer height */
 }
 
